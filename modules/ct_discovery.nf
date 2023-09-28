@@ -7,7 +7,11 @@ params.OUTPUT = "results/${nextflow.timestamp}/discovery_output"
 
 process DISCOVERY {
     tag "$alignmentID"
-    //label 'whatever'
+    
+    // Assign low priority workload, edit accordingly
+    label 'process_medium'
+
+    container = params.CONTAINER 
 
     // Define where to publish the output files.
     publishDir(params.OUTPUT, mode: 'copy')
@@ -24,14 +28,16 @@ process DISCOVERY {
 
     script:
     // Define extra discovery arguments from params.file
-    // def args = params.discovery_params ?: ''
+    def args = task.ext.args ?: ''
+    def config = traitfile ? "--config $traitfile" : ''
+
     """    
     ct discovery \\
         -a ${alignmentFile} \\
-        -t ${params.traitfile} \\
+        -t ${traitfile} \\
         -o ${alignmentID}.output \\
-        --fmt ${params.ali_format}
-        
+        --fmt ${params.ali_format} \\
+        ${args.replaceAll('\n', ' ')}
     """
     // IDK how to add the params, let's do it in the train and pass onto the next thingie
 }
