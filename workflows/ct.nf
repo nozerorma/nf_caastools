@@ -47,7 +47,6 @@ if (params.help) {
 align_tuple = Channel
                 .fromPath(params.alignment)
                 .map { file -> tuple(file.baseName, file) }
-config = file(params.traitfile)
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,13 +67,13 @@ include { ct_discovery } from "${baseDir}/modules/ct_discovery" addParams(ALIGN_
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-def caastools_report = []
+//def caastools_report = []
 
 
 
 // ENTRY WORKFLOW MUST BE SET IN THE MAIN.NF
 workflow CT{
-    discovery_out = ct_discovery(align_tuple, config)
+    discovery_out = ct_discovery(align_tuple)
 }
 
 

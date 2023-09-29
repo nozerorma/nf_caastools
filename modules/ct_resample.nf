@@ -1,37 +1,143 @@
 /*
-*  resample module
-*/
+ *  discovery module
+ */
 
 params.CONTAINER = "miralnso/caastools-barebones:latest"
-params.OUTPUT = "discovery_output"
 
-process discovery {
+process RESAMPLE_FGBG {
+    tag "$alignmentID"
     
-    publishDir(params.OUTPUT, mode: 'copy')
-    tag { "${alignment}" }
-    //label (params.LABEL)
+    // Assign mid priority workload, edit accordingly
+    // label 'process_medium'
 
-    input:
-    path alignment
-    path config
+    container = params.CONTAINER 
+
+    // Define where to publish the output files.
+    // publishDir(params.OUTPUT, mode: 'copy')
 
     output:
-    path "${alignment}.output", emit: alignment_out
+    tuple val(alignmentID), file("${alignmentID}.resampled.output")
+    
+    // when:
+    // task.ext.when == null || task.ext.when
 
     script:
+    // Define extra discovery arguments from params.file
+    def args = task.ext.args ?: ''
+
+    """    
+    ct resample \\
+        -p ${tree} \\
+        --bytemp ${template} \\
+        -o ${alignmentID}.resampled.output \\
+        -m ${params.ali_format} \\
+        ${args.replaceAll('\n', ' ')}
     """
-    ct discovery -a ${alignment} -t ${config} -o ${alignment}.output --fmt ${params.ali_format}
+    // IDK how to add the params, let's do it in the train and pass onto the next thingie
+}
+
+process RESAMPLE_TEMPLATE {
+    tag "$alignmentID"
+    
+    // Assign mid priority workload, edit accordingly
+    // label 'process_medium'
+
+    container = params.CONTAINER 
+
+    // Define where to publish the output files.
+    // publishDir(params.OUTPUT, mode: 'copy')
+    
+    output:
+    tuple val(alignmentID), file("${alignmentID}.resampled.output")
+    
+    // when:
+    // task.ext.when == null || task.ext.when
+
+    script:
+    // Define extra discovery arguments from params.file
+    def args = task.ext.args ?: ''
+
+    """    
+    ct resample \\
+        -p ${tree} \\
+        --bytemp ${template} \\
+        -o ${alignmentID}.resampled.output \\
+        -m ${params.ali_format} \\
+        ${args.replaceAll('\n', ' ')}
     """
+    // IDK how to add the params, let's do it in the train and pass onto the next thingie
+}
+
+process RESAMPLE_PHYLORESTRICTED {
+    tag "$alignmentID"
+    
+    // Assign mid priority workload, edit accordingly
+    // label 'process_medium'
+
+    container = params.CONTAINER 
+
+    // Define where to publish the output files.
+    // publishDir(params.OUTPUT, mode: 'copy')
+    
+    output:
+    tuple val(alignmentID), file("${alignmentID}.resampled.output")
+    
+    // when:
+    // task.ext.when == null || task.ext.when
+
+    script:
+    // Define extra discovery arguments from params.file
+    def args = task.ext.args ?: ''
+
+    """    
+    ct resample \\
+        -p ${tree} \\
+        --bytemp ${template} \\
+        -o ${alignmentID}.resampled.output \\
+        -m ${params.ali_format} \\
+        ${args.replaceAll('\n', ' ')}
+    """
+    // IDK how to add the params, let's do it in the train and pass onto the next thingie
+}
+
+process RESAMPLE_BM {
+    tag "$alignmentID"
+    
+    // Assign mid priority workload, edit accordingly
+    // label 'process_medium'
+
+    container = params.CONTAINER 
+
+    // Define where to publish the output files.
+    // publishDir(params.OUTPUT, mode: 'copy')
+    
+    output:
+    tuple val(alignmentID), file("${alignmentID}.resampled.output")
+    
+    // when:
+    // task.ext.when == null || task.ext.when
+
+    script:
+    // Define extra discovery arguments from params.file
+    def args = task.ext.args ?: ''
+
+    """    
+    ct resample \\
+        -p ${tree} \\
+        --bytemp ${template} \\
+        -o ${alignmentID}.resampled.output \\
+        -m ${params.ali_format} \\
+        ${args.replaceAll('\n', ' ')}
+    """
+    // IDK how to add the params, let's do it in the train and pass onto the next thingie
 }
 
 workflow ct_discovery {
-
     take: 
-        alignment
+        align_tuple
         traitfile
     main:
-        discovery(alignment, traitfile)
+        DISCOVERY(align_tuple, traitfile)
     emit:
-        disc_out = discovery.out.alignment_out 
-
+        disc_out = DISCOVERY.out
 }

@@ -48,6 +48,7 @@ include { CT } from './workflows/ct.nf'
 */
 
 workflow {
+    // set common timestamp for the whole workflow
     CT ()
 }
 
