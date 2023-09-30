@@ -47,7 +47,6 @@ if (params.help) {
 align_tuple = Channel
                 .fromPath(params.alignment)
                 .map { file -> tuple(file.baseName, file) }
-
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     IMPORT LOCAL MODULES/SUBWORKFLOWS
@@ -56,7 +55,7 @@ align_tuple = Channel
 
 
 include { ct_discovery } from "${baseDir}/modules/ct_discovery" addParams(ALIGN_TUPLE: align_tuple, LABEL:"twocpus")
-//include { ct_resample } from "${baseDir}/subworkflows/ct_discovery" addParams(ALIGN_TUPLE: align_tuple, LABEL:"twocpus")
+include { ct_resample } from "${baseDir}/modules/ct_resample" addParams(TREE: params.tree, LABEL:"twocpus")
 //include { ct_bootstrap } from "${baseDir}/subworkflows/ct_discovery" addParams(ALIGN_TUPLE: align_tuple, LABEL:"twocpus")
 
 //// include { INPUT_CHECK } from '../subworkflows/local/input_check'
@@ -74,6 +73,7 @@ include { ct_discovery } from "${baseDir}/modules/ct_discovery" addParams(ALIGN_
 // ENTRY WORKFLOW MUST BE SET IN THE MAIN.NF
 workflow CT{
     discovery_out = ct_discovery(align_tuple)
+    resample_out = ct_resample(tree)
 }
 
 

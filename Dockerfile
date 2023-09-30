@@ -1,29 +1,25 @@
 ## Emacs, make this -*- mode: sh; -*-
-FROM ubuntu:jammy
 
-# Set session as noninteractive and install required debian packages
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive \
-    apt-get install -qq -y --no-install-recommends \ 
-        software-properties-common \
-        dirmngr \
-        ed \
-        gpg-agent \
-		less \
-		locales \
-		vim-tiny \
-		wget \
-		ca-certificates
+# Use debian slim image with micromamba
 
-# Set installation as noninteractive and install required python/r dependencies
-# is it a good idea to explicit python and r deffinitions? also rerconverge
-# explore the idea of adding radian for an actually useful R console
-RUN apt-get update \
-        && DEBIAN_FRONTEND=noninteractive \
-        apt-get install -y --no-install-recommends \
-            python3 \
-            python3-pip \
-            python3-setuptools
+ARG BASE_IMAGE=debian:bookworm-slim
+
+# Mutli-stage build to keep final image small. Otherwise end up with
+# curl and openssl installed
+FROM --platform=$BUILDPLATFORM $BASE_IMAGE AS stage1
+ARG VERSION=1.5.1
+
+LABEL image.author.name "Miguel Ramon"
+LABEL image.author.email "miguel.ramon@upf.edu"
+
+COPY --chown=$MAMBA_USER:$MAMBA_USER env.yaml /tmp/env.yaml
+
+RUN micromamba create -n caastools
+
+RUN micromamba install -y -n caastools -f /tmp/env.yaml && \
+    micromamba clean --all --yes
+
+USER $MAMBA_USER
 
 # JIC
 RUN pip3 install --upgrade pip
@@ -34,14 +30,14 @@ RUN mkdir -p ./requirements ./modules ./scripts
 ADD requirements/requirements.txt ./requirements/
 ADD modules/ ./modules/
 ADD scripts/ ./scripts/
+
 # Make ct executable and add to $PATH
 ADD ct .
 RUN chmod +x ./ct
 ENV PATH=/ct:$PATH
+ENV PATH /opt/conda/envs/nf-tutorial/bin:$PATH
 
 # Installing Python libraries (Discovery/Bootstrap/Resample)
 RUN pip3 install -r requirements/requirements.txt
-
-# NOTE: No R installation is included, use biocontainers/rerconverge package
 
 CMD ["bash"]
