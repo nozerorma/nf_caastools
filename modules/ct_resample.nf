@@ -57,7 +57,7 @@ process RESAMPLE {
     } else if (params.strategy == "PHYLORESTRICTED") {
         strategyCommand = "--bytemp ${params.template} --limit_by_group ${params.group}"
     } else if (params.strategy == "BM") {
-        strategyCommand = "--bytemp ${params.template} --mode bm"
+        strategyCommand = "--bytemp ${params.template} --traitvalues ${params.traitvalues} --mode bm"
     } else {
         exit 1, "Invalid strategy: ${params.strategy}"
     }
