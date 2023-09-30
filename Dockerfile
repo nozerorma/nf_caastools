@@ -41,3 +41,5 @@ ENV PATH=/ct:$PATH
 ENV PATH /opt/conda/envs/caastools/bin:$PATH
 
 USER $MAMBA_USER
+
+ENTRYPOINT ["/usr/local/bin/_entrypoint.sh"]
