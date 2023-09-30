@@ -2,7 +2,7 @@
  *  discovery module
  */
 
-params.CONTAINER = "miralnso/caastools-barebones:latest"
+//params.CONTAINER = "miralnso/caastools-micromamba:latest"
 
 process DISCOVERY {
     tag "$alignmentID"
@@ -10,7 +10,7 @@ process DISCOVERY {
     // Assign mid priority workload, edit accordingly
     // label 'process_medium'
 
-    container = params.CONTAINER 
+    //container = params.CONTAINER 
 
     // Define where to publish the output files.
     // publishDir(params.OUTPUT, mode: 'copy')
@@ -20,9 +20,6 @@ process DISCOVERY {
 
     output:
     tuple val(alignmentID), file("${alignmentID}.output")
-    
-    // when:
-    // task.ext.when == null || task.ext.when
 
     script:
     // Define extra discovery arguments from params.file

@@ -2,18 +2,18 @@
  *  discovery module
  */
 
-params.CONTAINER = "miralnso/caastools-barebones:latest"
+//params.CONTAINER = "miralnso/caastools-micromamba:latest"
 
 process RESAMPLE {
-    service:
-    image 'wem26/rerconverge:latest'
+    tag "$nw_tree"
     
-    tag "$tree"
-
-    container = params.CONTAINER 
+    //container = params.CONTAINER 
+    
+    input:
+    path nw_tree
 
     output:
-    tuple val(tree), file("${tree}.resampled.output")
+    tuple val(nw_tree), file("${nw_tree}.resampled.output")
     
     script:
     def args = task.ext.args ?: ''
@@ -34,8 +34,8 @@ process RESAMPLE {
 
     """
     ct resample \\
-        -p ${tree} \\
-        -o ${alignmentID}.resampled.output \\
+        -p ${nw_tree} \\
+        -o ${nw_tree}.resampled.output \\
         ${strategyCommand} \\
         $args
     """
@@ -43,9 +43,9 @@ process RESAMPLE {
 
 workflow ct_resample {
     take:
-        tree
+        nw_tree
     main:
-        RESAMPLE(tree)
+        RESAMPLE(nw_tree)
     emit:
         resamp_out = RESAMPLE.out
 }
