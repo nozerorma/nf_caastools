@@ -1,14 +1,44 @@
+#!/usr/bin/env nextflow
+
 /*
- *  discovery module
+#                          _              _
+#                         | |            | |
+#      ___ __ _  __ _ ___| |_ ___   ___ | |___
+#    / __/ _` |/ _` / __| __/ _ \ / _ \| / __|
+#   | (_| (_| | (_| \__ \ || (_) | (_) | \__ \
+#   \___\__,_|\__,_|___/\__\___/ \___/|_|___/
+#
+# A Convergent Amino Acid Substitution identification 
+# and analysis toolbox
+#
+# Author:         Fabio Barteri (fabio.barteri@upf.edu)
+# Contributors:   Alejandro Valenzuela (alejandro.valenzuela@upf.edu),
+#                 Xavier Farré (xfarrer@igtp.cat),
+#                 David de Juan (david.juan@upf.edu),
+#                 Miguel Ramon (miguel.ramon@upf.edu) - Nextflow Protocol Elaboration
+#
+# File: ct_resample.nf
+#
+*/
+
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  RESAMPLE module: This module is responsible for resampling based on different strategies.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-//params.CONTAINER = "miralnso/caastools-micromamba:latest"
+// Uncomment the following line if you want to use a specific container.
+// params.CONTAINER = "miralnso/caastools-micromamba:latest"
 
 process RESAMPLE {
     tag "$nw_tree"
-    
-    //container = params.CONTAINER 
-    
+
+    // Uncomment the following lines to assign workload priority, container, and output directory.
+    // label 'process_medium'
+    // container = params.CONTAINER 
+    // publishDir(params.OUTPUT, mode: 'copy')
+
+
     input:
     path nw_tree
 
@@ -19,14 +49,14 @@ process RESAMPLE {
     def args = task.ext.args ?: ''
     def strategyCommand = ""
     
+    // Determine the strategy command based on the provided strategy
     if (params.strategy == "FGBG") {
-        strategyCommand = "-f ${params.fgsize} -b ${params.bgsize} -m random"  // replace with actual command for this strategy
+        strategyCommand = "-f ${params.fgsize} -b ${params.bgsize} -m random"
     } else if (params.strategy == "TEMPLATE") {
-        strategyCommand = "--bytemp ${params.template} -m random"  // replace with actual command for this strategy
+        strategyCommand = "--bytemp ${params.template} -m random"
     } else if (params.strategy == "PHYLORESTRICTED") {
-        strategyCommand = "--bytemp ${params.template} --limit_by_group ${params.group}"  // replace with actual command for this strategy
+        strategyCommand = "--bytemp ${params.template} --limit_by_group ${params.group}"
     } else if (params.strategy == "BM") {
-        conda 
         strategyCommand = "--bytemp ${params.template} --mode bm"
     } else {
         exit 1, "Invalid strategy: ${params.strategy}"
