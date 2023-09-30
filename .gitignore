@@ -4,3 +4,7 @@ caastools.Rproj
 .Rhistory
 workspace
 .venv
+.nextflow/*
+.nextflow*
+work
+results

@@ -17,7 +17,8 @@ RUN apt-get update \
 		less \
 		locales \
 		vim-tiny \
-		ca-certificates
+		ca-certificates \
+        procps
 
 COPY --chown=$MAMBA_USER:$MAMBA_USER env.yml /tmp/env.yml
 
