@@ -8,3 +8,4 @@ workspace
 .nextflow*
 work
 results
+log/nextflow.log

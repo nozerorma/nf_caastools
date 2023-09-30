@@ -33,11 +33,12 @@ WORKDIR /ct
 RUN mkdir -p ./modules ./scripts
 COPY --chown=$MAMBA_USER:$MAMBA_USER modules/ ./modules/
 COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/ ./scripts/
-COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/permulations.r ./permulations.r
+COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/permulations.r .
 
 # Make ct executable and add to $PATH
 COPY --chown=$MAMBA_USER:$MAMBA_USER ct .
 RUN chmod +x ./ct
+RUN chmod +x ./permulations.r
 
 ENV PATH=/ct:$PATH
 ENV PATH /opt/conda/envs/caastools/bin:$PATH
