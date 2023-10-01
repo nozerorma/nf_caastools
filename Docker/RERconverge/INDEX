@@ -1,0 +1,134 @@
+RERconverge             RERconverge
+calculateCorPermuted    Calculate permulation correlation statistics
+calculatePermulatedPaths_apply
+                        Calculates the paths for all permulated trees
+                        for a list of genes
+char2Paths              turns a named vector of characters into a paths
+                        vector to be used with 'getAllCor'
+click_select_foreground_branches
+                        Interactive click-based function to select
+                        foreground branches showing convergent binary
+                        trait
+combinePermData         Combines batches of permulations
+correlateWithBinaryPhenotype
+                        Computes the association statistics between RER
+                        from 'getAllResiduals' and a phenotype paths
+                        vector for a binary phenotype made with
+                        'tree2Paths'
+correlateWithContinuousPhenotype
+                        Computes the association statistics between RER
+                        from 'getAllResiduals' and a phenotype paths
+                        vector for a continuous phenotype made with
+                        'char2Paths'
+edgeVars                maps a vector of traits onto a reference tree
+estimatePhangornTree    Estimate a ML tree from a given topology Uses
+                        'pml' and 'optim.pml' from the 'phangorn'
+                        package to estimate the tree.
+estimatePhangornTreeAll
+                        Estimates a ML trees from a given topology for
+                        a list of alignments. Wirtes a text file
+                        compatble with readTrees(). Uses 'pml' and
+                        'optim.pml' from the 'phangorn' package to
+                        estimate the tree.
+fastwilcoxGMTall        Performs Wilcoxon Rank-Sum pathway enrichment
+                        on pathway genesets
+fixPseudoroot           pseudoroot trait tree to match the psuedoroot
+                        of trees from 'readTrees' if the trees are
+                        reconcilable
+foreground2Paths        Creates paths from a set of foreground species
+foreground2Tree         Creates a binary trait tree from a set of
+                        foreground species.
+foreground2TreeClades   Generates a binary phenotype tree using the
+                        list of tip foreground animals, foreground
+                        common ancestors, and their phylogenetic
+                        relationships
+generatePermulatedBinPhen
+                        Produces binary permulations for a gene
+generatePermulatedBinPhenSSMBatched
+                        Produces binary SSM permulations for a list of
+                        genes
+getAllCor               Computes the association statistics between RER
+                        from 'getAllResiduals' and a phenotype paths
+                        vector made with 'tree2Paths' or 'char2Paths'
+getAllResiduals         main RER computation function
+getEnrichPerms          Performs enrichment statistic permulations
+                        using existing gene correlation permulations
+getForegroundInfoClades
+                        Generates a binary phenotype tree and
+                        foreground clades information using the list of
+                        tip foreground animals, the presence of
+                        foreground common ancestors, and their
+                        phylogenetic relationships
+getPermsBinary          Calculates permuted correlation and enrichment
+                        statistics for binary phenotype
+getPermsContinuous      Calculates permuted correlation and enrichment
+                        statistics
+getStat                 Calculates Rho-signed negative log-base-ten
+                        p-value for use in enrichment functions
+makeBinaryPaths         Makes a binary path vector from either a tree
+                        of class "phylo" or a foreground species set
+                        supplied as a character vector
+matchAllNodesClades     Calculates the clade mappings between the gene
+                        tree and the master tree (with the complete
+                        topology)
+namePathsWSpecies       Provides names for paths/RERs representing
+                        terminal branches for plotting Originally an
+                        internal function but necessary for the
+                        vignette/walk-through
+permpvalcor             Calculates correlation permutation pvals from
+                        output of 'getPermsContinuous'
+permpvalenrich          Calculates enrichment permutation pvals from
+                        output of 'getPermsContinuous'
+permutevec              Generates a permuted continuous phenotype given
+                        an observed continuous phenotype
+plotRers                Plot the residuals reflecting the relative
+                        evolutionary rates (RERs) of a gene across
+                        species present in the gene tree
+plotTreeHighlightBranches
+                        Plot the provided tree, (optionally) rerooted,
+                        with specified branches highlighted
+pruneTree               wrapper around 'drop.tip'
+read.gmt                Reads pathway data from a gmt-formatted file
+                        from GSEA-MSigDB
+readTrees               reads trees from a 2 column , tab seperated,
+                        file The first columns is the gene name and the
+                        second column is the corresponding tree in
+                        parenthetic format known as the Newick or New
+                        Hampshire format
+returnRersAsNewickStrings
+                        Produce a vector of newick strings representing
+                        gene trees where the edge lengths correspond to
+                        RERs
+returnRersAsTree        Produce a gene tree with branch lengths
+                        representing RERs and (optionally) display
+                        these RERs as branch labels
+returnRersAsTreesAll    Produce a multiPhylo object of all gene trees
+                        with branch lengths representing RERs for each
+                        gene
+simBinPheno             Generates a permulated phylogenetic tree with
+                        specified number of foreground branches.  User
+                        may specify the number of foreground branches
+                        that are internal branches.
+simBinPhenoCC           Produces one CC binary permulation for a gene
+simBinPhenoSSM          Produces one SSM binary permulation for a gene
+simBinPhenoVec          Generates a permulated phenotype vector whose
+                        phylogeny matches a desired structure.  User
+                        may specify the number of foreground branches
+                        that are internal branches.
+simpermvec              Generates a permulated continuous phenotype
+                        given an observed continuous phenotype and a
+                        phylogeny
+simulatevec             Generates a simulated continuous phenotype
+                        given an observed continuous phenotype and a
+                        phylogeny
+tree2Paths              Generate a phenotype paths vector from a
+                        phenotype tree
+tree2PathsClades        A modification of the tree2Paths function that
+                        takes in pre-calculated mappings
+treePlotNew             Plot 'tree' with branch labels colored in a
+                        heatmap based on values in 'vals'
+treePlotRers            Plot a cladogram with RERs shown as either
+                        labels (type="label") or a color heatmap along
+                        the branches (type="color") Wraps around
+                        'returnRersAsTree' or 'treePlotNew',
+                        respectively
