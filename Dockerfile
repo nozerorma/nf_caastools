@@ -20,7 +20,7 @@ RUN apt-get update \
 		ca-certificates \
         procps
 
-COPY --chown=$MAMBA_USER:$MAMBA_USER env.yml /tmp/env.yml
+COPY env.yml /tmp/env.yml
 
 
 RUN micromamba install -y -n base -f /tmp/env.yml && \
@@ -31,18 +31,16 @@ RUN micromamba install -y -n base -f /tmp/env.yml && \
 WORKDIR /ct
 
 RUN mkdir -p ./modules ./scripts
-COPY --chown=$MAMBA_USER:$MAMBA_USER modules/ ./modules/
-COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/ ./scripts/
-COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/permulations.r .
+ADD  modules/ ./modules/
+ADD  scripts/ ./scripts/
+ADD  scripts/permulations.r .
 
 # Make ct executable and add to $PATH
-COPY --chown=$MAMBA_USER:$MAMBA_USER ct .
+ADD ct .
 RUN chmod +x ./ct
 RUN chmod +x ./permulations.r
 
 ENV PATH=/ct:$PATH
 ENV PATH /opt/conda/envs/caastools/bin:$PATH
-
-USER $MAMBA_USER
 
 ENTRYPOINT ["/usr/local/bin/_entrypoint.sh"]
