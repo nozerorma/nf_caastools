@@ -22,9 +22,10 @@ RUN apt-get update \
 
 COPY env.yml /tmp/env.yml
 
-
 RUN micromamba install -y -n base -f /tmp/env.yml && \
     micromamba clean --all --yes
+
+COPY RERconverge /opt/conda/lib/R/library/RERconverge
 
 
 # Set CAASTools WD and build directory structure
@@ -33,6 +34,7 @@ WORKDIR /ct
 RUN mkdir -p ./modules ./scripts
 ADD  modules/ ./modules/
 ADD  scripts/ ./scripts/
+
 ADD  scripts/permulations.r .
 
 # Make ct executable and add to $PATH
@@ -41,6 +43,6 @@ RUN chmod +x ./ct
 RUN chmod +x ./permulations.r
 
 ENV PATH=/ct:$PATH
-ENV PATH /opt/conda/envs/caastools/bin:$PATH
+ENV PATH /opt/conda/envs/base/bin:$PATH
 
 ENTRYPOINT ["/usr/local/bin/_entrypoint.sh"]

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head><title>R: Analysis of Convergence Between Organismal Traits and
+DNA/Protein Sequences</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+<h1> Analysis of Convergence Between Organismal Traits and
+DNA/Protein Sequences
+<img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
+</h1>
+<hr/>
+<div style="text-align: center;">
+<a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
+<a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
+</div><h2>Documentation for package &lsquo;RERconverge&rsquo; version 0.1.0</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="calculateCorPermuted.html">calculateCorPermuted</a></td>
+<td>Calculate permulation correlation statistics</td></tr>
+<tr><td style="width: 25%;"><a href="calculatePermulatedPaths_apply.html">calculatePermulatedPaths_apply</a></td>
+<td>Calculates the paths for all permulated trees for a list of genes</td></tr>
+<tr><td style="width: 25%;"><a href="char2Paths.html">char2Paths</a></td>
+<td>turns a named vector of characters into a paths vector to be used with 'getAllCor'</td></tr>
+<tr><td style="width: 25%;"><a href="click_select_foreground_branches.html">click_select_foreground_branches</a></td>
+<td>Interactive click-based function to select foreground branches showing convergent binary trait</td></tr>
+<tr><td style="width: 25%;"><a href="combinePermData.html">combinePermData</a></td>
+<td>Combines batches of permulations</td></tr>
+<tr><td style="width: 25%;"><a href="correlateWithBinaryPhenotype.html">correlateWithBinaryPhenotype</a></td>
+<td>Computes the association statistics between RER from 'getAllResiduals' and a phenotype paths vector for a binary phenotype made with 'tree2Paths'</td></tr>
+<tr><td style="width: 25%;"><a href="correlateWithContinuousPhenotype.html">correlateWithContinuousPhenotype</a></td>
+<td>Computes the association statistics between RER from 'getAllResiduals' and a phenotype paths vector for a continuous phenotype made with 'char2Paths'</td></tr>
+<tr><td style="width: 25%;"><a href="edgeVars.html">edgeVars</a></td>
+<td>maps a vector of traits onto a reference tree</td></tr>
+<tr><td style="width: 25%;"><a href="estimatePhangornTree.html">estimatePhangornTree</a></td>
+<td>Estimate a ML tree from a given topology Uses 'pml' and 'optim.pml' from the 'phangorn' package to estimate the tree.</td></tr>
+<tr><td style="width: 25%;"><a href="estimatePhangornTreeAll.html">estimatePhangornTreeAll</a></td>
+<td>Estimates a ML trees from a given topology for a list of alignments. Wirtes a text file compatble with readTrees(). Uses 'pml' and 'optim.pml' from the 'phangorn' package to estimate the tree.</td></tr>
+<tr><td style="width: 25%;"><a href="fastwilcoxGMTall.html">fastwilcoxGMTall</a></td>
+<td>Performs Wilcoxon Rank-Sum pathway enrichment on pathway genesets</td></tr>
+<tr><td style="width: 25%;"><a href="fixPseudoroot.html">fixPseudoroot</a></td>
+<td>pseudoroot trait tree to match the psuedoroot of trees from 'readTrees' if the trees are reconcilable</td></tr>
+<tr><td style="width: 25%;"><a href="foreground2Paths.html">foreground2Paths</a></td>
+<td>Creates paths from a set of foreground species</td></tr>
+<tr><td style="width: 25%;"><a href="foreground2Tree.html">foreground2Tree</a></td>
+<td>Creates a binary trait tree from a set of foreground species.</td></tr>
+<tr><td style="width: 25%;"><a href="foreground2TreeClades.html">foreground2TreeClades</a></td>
+<td>Generates a binary phenotype tree using the list of tip foreground animals, foreground common ancestors, and their phylogenetic relationships</td></tr>
+<tr><td style="width: 25%;"><a href="generatePermulatedBinPhen.html">generatePermulatedBinPhen</a></td>
+<td>Produces binary permulations for a gene</td></tr>
+<tr><td style="width: 25%;"><a href="generatePermulatedBinPhenSSMBatched.html">generatePermulatedBinPhenSSMBatched</a></td>
+<td>Produces binary SSM permulations for a list of genes</td></tr>
+<tr><td style="width: 25%;"><a href="getAllCor.html">getAllCor</a></td>
+<td>Computes the association statistics between RER from 'getAllResiduals' and a phenotype paths vector made with 'tree2Paths' or 'char2Paths'</td></tr>
+<tr><td style="width: 25%;"><a href="getAllResiduals.html">getAllResiduals</a></td>
+<td>main RER computation function</td></tr>
+<tr><td style="width: 25%;"><a href="getEnrichPerms.html">getEnrichPerms</a></td>
+<td>Performs enrichment statistic permulations using existing gene correlation permulations</td></tr>
+<tr><td style="width: 25%;"><a href="getForegroundInfoClades.html">getForegroundInfoClades</a></td>
+<td>Generates a binary phenotype tree and foreground clades information using the list of tip foreground animals, the presence of foreground common ancestors, and their phylogenetic relationships</td></tr>
+<tr><td style="width: 25%;"><a href="getPermsBinary.html">getPermsBinary</a></td>
+<td>Calculates permuted correlation and enrichment statistics for binary phenotype</td></tr>
+<tr><td style="width: 25%;"><a href="getPermsContinuous.html">getPermsContinuous</a></td>
+<td>Calculates permuted correlation and enrichment statistics</td></tr>
+<tr><td style="width: 25%;"><a href="getStat.html">getStat</a></td>
+<td>Calculates Rho-signed negative log-base-ten p-value for use in enrichment functions</td></tr>
+<tr><td style="width: 25%;"><a href="makeBinaryPaths.html">makeBinaryPaths</a></td>
+<td>Makes a binary path vector from either a tree of class "phylo" or a foreground species set supplied as a character vector</td></tr>
+<tr><td style="width: 25%;"><a href="matchAllNodesClades.html">matchAllNodesClades</a></td>
+<td>Calculates the clade mappings between the gene tree and the master tree (with the complete topology)</td></tr>
+<tr><td style="width: 25%;"><a href="namePathsWSpecies.html">namePathsWSpecies</a></td>
+<td>Provides names for paths/RERs representing terminal branches for plotting Originally an internal function but necessary for the vignette/walk-through</td></tr>
+<tr><td style="width: 25%;"><a href="permpvalcor.html">permpvalcor</a></td>
+<td>Calculates correlation permutation pvals from output of 'getPermsContinuous'</td></tr>
+<tr><td style="width: 25%;"><a href="permpvalenrich.html">permpvalenrich</a></td>
+<td>Calculates enrichment permutation pvals from output of 'getPermsContinuous'</td></tr>
+<tr><td style="width: 25%;"><a href="permutevec.html">permutevec</a></td>
+<td>Generates a permuted continuous phenotype given an observed continuous phenotype</td></tr>
+<tr><td style="width: 25%;"><a href="plotRers.html">plotRers</a></td>
+<td>Plot the residuals reflecting the relative evolutionary rates (RERs) of a gene across species present in the gene tree</td></tr>
+<tr><td style="width: 25%;"><a href="plotTreeHighlightBranches.html">plotTreeHighlightBranches</a></td>
+<td>Plot the provided tree, (optionally) rerooted, with specified branches highlighted</td></tr>
+<tr><td style="width: 25%;"><a href="pruneTree.html">pruneTree</a></td>
+<td>wrapper around 'drop.tip'</td></tr>
+<tr><td style="width: 25%;"><a href="read.gmt.html">read.gmt</a></td>
+<td>Reads pathway data from a gmt-formatted file from GSEA-MSigDB</td></tr>
+<tr><td style="width: 25%;"><a href="readTrees.html">readTrees</a></td>
+<td>reads trees from a 2 column , tab seperated, file The first columns is the gene name and the second column is the corresponding tree in parenthetic format known as the Newick or New Hampshire format</td></tr>
+<tr><td style="width: 25%;"><a href="RERconverge.html">RERconverge</a></td>
+<td>RERconverge</td></tr>
+<tr><td style="width: 25%;"><a href="returnRersAsNewickStrings.html">returnRersAsNewickStrings</a></td>
+<td>Produce a vector of newick strings representing gene trees where the edge lengths correspond to RERs</td></tr>
+<tr><td style="width: 25%;"><a href="returnRersAsTree.html">returnRersAsTree</a></td>
+<td>Produce a gene tree with branch lengths representing RERs and (optionally) display these RERs as branch labels</td></tr>
+<tr><td style="width: 25%;"><a href="returnRersAsTreesAll.html">returnRersAsTreesAll</a></td>
+<td>Produce a multiPhylo object of all gene trees with branch lengths representing RERs for each gene</td></tr>
+<tr><td style="width: 25%;"><a href="simBinPheno.html">simBinPheno</a></td>
+<td>Generates a permulated phylogenetic tree with specified number of foreground branches.  User may specify the number of foreground branches that are internal branches.</td></tr>
+<tr><td style="width: 25%;"><a href="simBinPhenoCC.html">simBinPhenoCC</a></td>
+<td>Produces one CC binary permulation for a gene</td></tr>
+<tr><td style="width: 25%;"><a href="simBinPhenoSSM.html">simBinPhenoSSM</a></td>
+<td>Produces one SSM binary permulation for a gene</td></tr>
+<tr><td style="width: 25%;"><a href="simBinPhenoVec.html">simBinPhenoVec</a></td>
+<td>Generates a permulated phenotype vector whose phylogeny matches a desired structure.  User may specify the number of foreground branches that are internal branches.</td></tr>
+<tr><td style="width: 25%;"><a href="simpermvec.html">simpermvec</a></td>
+<td>Generates a permulated continuous phenotype given an observed continuous phenotype and a phylogeny</td></tr>
+<tr><td style="width: 25%;"><a href="simulatevec.html">simulatevec</a></td>
+<td>Generates a simulated continuous phenotype given an observed continuous phenotype and a phylogeny</td></tr>
+<tr><td style="width: 25%;"><a href="tree2Paths.html">tree2Paths</a></td>
+<td>Generate a phenotype paths vector from a phenotype tree</td></tr>
+<tr><td style="width: 25%;"><a href="tree2PathsClades.html">tree2PathsClades</a></td>
+<td>A modification of the tree2Paths function that takes in pre-calculated mappings</td></tr>
+<tr><td style="width: 25%;"><a href="treePlotNew.html">treePlotNew</a></td>
+<td>Plot 'tree' with branch labels colored in a heatmap based on values in 'vals'</td></tr>
+<tr><td style="width: 25%;"><a href="treePlotRers.html">treePlotRers</a></td>
+<td>Plot a cladogram with RERs shown as either labels (type="label") or a color heatmap along the branches (type="color") Wraps around 'returnRersAsTree' or 'treePlotNew', respectively</td></tr>
+</table>
+</div></body></html>
