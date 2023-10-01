@@ -8,3 +8,5 @@ output_*
 .nextflow*
 work
 results
+log
+null
