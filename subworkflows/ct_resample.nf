@@ -39,7 +39,7 @@ process RESAMPLE {
     path nw_tree
 
     output:
-    tuple val(nw_tree), file("${nw_tree}.resampled.output")
+    file("${nw_tree}.resampled.output")
     
     script:
     def args = task.ext.args ?: ''
@@ -65,13 +65,4 @@ process RESAMPLE {
         ${strategyCommand} \\
         $args
     """
-}
-
-workflow ct_resample {
-    take:
-        nw_tree
-    main:
-        RESAMPLE(nw_tree)
-    emit:
-        resamp_out = RESAMPLE.out
 }

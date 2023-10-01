@@ -40,32 +40,27 @@ params.help = false  // Prevents a warning of undefined parameter
 
 // Display input parameters
 log.info """
-#
-#CAASTOOL - N F PIPELINE  ~  version ${version}
-#=============================================
-#                          _              _
-#                         | |            | |
-#      ___ __ _  __ _ ___| |_ ___   ___ | |___
-#    / __/ _` |/ _` / __| __/ _ \ / _ \| / __|
-#   | (_| (_| | (_| \__ \ || (_) | (_) | \__ \
-#   \___\__,_|\__,_|___/\__\___/ \___/|_|___/
-#
-# A Convergent Amino Acid Substitution identification 
-# and analysis toolbox
-#
-# Author:         Fabio Barteri (fabio.barteri@upf.edu)
-# Contributors:   Alejandro Valenzuela (alejandro.valenzuela@upf.edu),
-#                 Xavier Farré (xfarrer@igtp.cat),
-#                 David de Juan (david.juan@upf.edu),
-#                 Miguel Ramon (miguel.ramon@upf.edu) - Nextflow Protocol Elaboration
-#
-# File: ct.nf
-#
+
+CAASTOOL - N F PIPELINE  ~  version ${version}
+=============================================
+
+ A Convergent Amino Acid Substitution identification 
+ and analysis toolbox
+
+ Author:         Fabio Barteri (fabio.barteri@upf.edu)
+ Contributors:   Alejandro Valenzuela (alejandro.valenzuela@upf.edu),
+                 Xavier Farré (xfarrer@igtp.cat),
+                 David de Juan (david.juan@upf.edu),
+                 Miguel Ramon (miguel.ramon@upf.edu) - Nextflow Protocol Elaboration
+
+ File: main.nf
+
 """
+
 
 // Display help message if --help parameter is used in the command line
 if (params.help) {
-    log.info """
+    log.info '''
         CAASTOOLS version 0.9 (beta)
         Convergent Amino Acid Substitution detection and analysis TOOLbox
 
@@ -80,7 +75,7 @@ if (params.help) {
         resample        Resamples virtual phenotypes for CAAS bootstrap analysis.
 
         bootstrap       Runs CAAS bootstrap analysis on a on a single MSA.
-    """
+''' 
     exit 1
 }
 

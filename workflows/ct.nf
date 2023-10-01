@@ -36,22 +36,22 @@ align_tuple = Channel
 nw_tree = file(params.tree)
 
 // Import local modules/subworkflows
-include { ct_discovery } from "${baseDir}/modules/ct_discovery" addParams(ALIGN_TUPLE: align_tuple, LABEL:"twocpus")
-include { ct_resample } from "${baseDir}/modules/ct_resample" addParams(NW_TREE: nw_tree, LABEL:"twocpus")
-include { ct_bootstrap } from "${baseDir}/subworkflows/ct_discovery" addParams(ALIGN_TUPLE: align_tuple, LABEL:"twocpus")
+include { DISCOVERY } from "${baseDir}/subworkflows/ct_discovery" addParams(ALIGN_TUPLE: align_tuple, LABEL:"twocpus")
+include { RESAMPLE } from "${baseDir}/subworkflows/ct_resample" addParams(NW_TREE: nw_tree, LABEL:"twocpus")
+include { BOOTSTRAP } from "${baseDir}/subworkflows/ct_bootstrap" addParams(ALIGN_TUPLE: align_tuple, LABEL:"twocpus")
 
 // Main workflow
 def toolsToRun = params.ct_tool.split(',')
 
 workflow CT {
     if (toolsToRun.contains('discovery')) {
-        discovery_out = ct_discovery(align_tuple)
+        discovery_out = DISCOVERY(align_tuple)
     }
     if (toolsToRun.contains('resample')) {
-        resample_out = ct_resample(nw_tree)
+        resample_out = RESAMPLE(nw_tree)
     }
     if (toolsToRun.contains('bootstrap')) {
-        bootstrap_out = ct_bootstrap(discovery_out, resample_out)
+        boostrap_out = BOOTSTRAP(align_tuple, resample_out)
     }
 }
 
