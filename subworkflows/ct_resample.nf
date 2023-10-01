@@ -27,23 +27,19 @@
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-// Uncomment the following line if you want to use a specific container.
-// params.CONTAINER = "miralnso/caastools-micromamba:latest"
 
 process RESAMPLE {
     tag "$nw_tree"
 
-    // Uncomment the following lines to assign workload priority, container, and output directory.
+    // Uncomment the following lines to assign workload priority.
     // label 'process_medium'
-    // container = params.CONTAINER 
-    // publishDir(params.OUTPUT, mode: 'copy')
 
 
     input:
     path nw_tree
 
     output:
-    tuple val(nw_tree), file("${nw_tree}.resampled.output")
+    file("${nw_tree}.resampled.output")
     
     script:
     def args = task.ext.args ?: ''
@@ -55,7 +51,7 @@ process RESAMPLE {
     } else if (params.strategy == "TEMPLATE") {
         strategyCommand = "--bytemp ${params.template} -m random"
     } else if (params.strategy == "PHYLORESTRICTED") {
-        strategyCommand = "--bytemp ${params.template} --limit_by_group ${params.group}"
+        strategyCommand = "--bytemp ${params.template} --limit_by_group ${params.bygroup}"
     } else if (params.strategy == "BM") {
         strategyCommand = "--bytemp ${params.template} --traitvalues ${params.traitvalues} --mode bm"
     } else {
@@ -69,13 +65,4 @@ process RESAMPLE {
         ${strategyCommand} \\
         $args
     """
-}
-
-workflow ct_resample {
-    take:
-        nw_tree
-    main:
-        RESAMPLE(nw_tree)
-    emit:
-        resamp_out = RESAMPLE.out
 }

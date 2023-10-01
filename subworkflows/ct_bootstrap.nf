@@ -17,53 +17,36 @@
 #                 David de Juan (david.juan@upf.edu),
 #                 Miguel Ramon (miguel.ramon@upf.edu) - Nextflow Protocol Elaboration
 #
-# File: ct_discovery.nf
+# File: ct_bootstrap.nf
 #
 */
 
 /*
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *  DISCOVERY module: This module is responsible for the discovery process based on input alignments.
+ *  BOOTSTRAP module: This module is responsible for bootstraping on different discovery groups.
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-// Uncomment the following line if you want to use a specific container.
-// params.CONTAINER = "miralnso/caastools-micromamba:latest"
-
-process DISCOVERY {
+process BOOTSTRAP {
     tag "$alignmentID"
     
-    // Uncomment the following lines to assign workload priority, container, and output directory.
-    // label 'process_medium'
-    // container = params.CONTAINER 
-    // publishDir(params.OUTPUT, mode: 'copy')
-
     input:
     tuple val(alignmentID), file(alignmentFile)
-
+    file(resampledFile)
+    
     output:
-    tuple val(alignmentID), file("${alignmentID}.output")
+    tuple val(alignmentID), file("${alignmentID}.bootstraped.output")
 
     script:
-    // Define extra discovery arguments from params.file
     def args = task.ext.args ?: ''
 
     """    
-    ct discovery \\
+    ct bootstrap \\
         -a ${alignmentFile} \\
         -t ${params.traitfile} \\
-        -o ${alignmentID}.output \\
+        -s ${resampledFile} \\
+        -o ${alignmentID}.bootstraped.output \\
         --fmt ${params.ali_format} \\
         ${args.replaceAll('\n', ' ')}
     """
-    // Note: If unsure about how to add params, consider defining them in a separate config or parameters file.
-}
-
-workflow ct_discovery {
-    take: 
-        align_tuple
-    main:
-        DISCOVERY(align_tuple)
-    emit:
-        disc_out = DISCOVERY.out
 }

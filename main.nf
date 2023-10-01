@@ -35,6 +35,51 @@
 
 nextflow.enable.dsl = 2
 
+version = "0.0.1"
+params.help = false  // Prevents a warning of undefined parameter
+
+// Display input parameters
+log.info """
+
+CAASTOOL - N F PIPELINE  ~  version ${version}
+=============================================
+
+ A Convergent Amino Acid Substitution identification 
+ and analysis toolbox
+
+ Author:         Fabio Barteri (fabio.barteri@upf.edu)
+ Contributors:   Alejandro Valenzuela (alejandro.valenzuela@upf.edu),
+                 Xavier Farré (xfarrer@igtp.cat),
+                 David de Juan (david.juan@upf.edu),
+                 Miguel Ramon (miguel.ramon@upf.edu) - Nextflow Protocol Elaboration
+
+ File: main.nf
+
+"""
+
+
+// Display help message if --help parameter is used in the command line
+if (params.help) {
+    log.info '''
+        CAASTOOLS version 0.9 (beta)
+        Convergent Amino Acid Substitution detection and analysis TOOLbox
+
+        General usage:          > ct [tool] [options]
+        Help for single tool:   > ct [tool] --help
+
+        Tools           Description
+        --------        -------------------------------------------------
+        discovery       Detects Convergent Amino Acid Substitutions (CAAS) from
+                        a single Multiple Sequence Alignment (MSA).
+
+        resample        Resamples virtual phenotypes for CAAS bootstrap analysis.
+
+        bootstrap       Runs CAAS bootstrap analysis on a on a single MSA.
+''' 
+    exit 1
+}
+
+
 /*
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *  VALIDATE & PRINT PARAMETER SUMMARY: This section handles parameter validation and help messages.
