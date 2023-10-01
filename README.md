@@ -1,4 +1,3 @@
-
 # CAAStools 1.0 - Software documentation.
 # 1. Introduction to CAAStools
 
@@ -711,17 +710,77 @@ Column 5: Cycles with positive CAAS
 
 `ct bootstrap -s test/resample/random.resampling.tab -t examples/config.tab -a examples/MSA/primates.msa.pr -o examples/random.bootstrap.tab --fmt phylip-relaxed`
 
-5. License
+# 6. Docker
+
+Docker images can be constructed utilizing the provided Dockerfile. Additionally, these images are accessible under the tag [miralnso/caastools-micromamba:latest](https://hub.docker.com/r/miralnso/caastools-micromamba).
+
+A detailed examination of the Dockerfile reveals that a minimal installation approach was adopted, utilizing version 1.5.1 from the [Micromamba](https://hub.docker.com/r/mambaorg/micromamba) Docker repository. This is built upon a streamlined base of Debian Bookworm. The selection of Micromamba was strategic, aiming to ensure workspace reproducibility within an immutable environment, all while leveraging a compact base image, as opposed to alternatives like Conda or Mamba.
+
+Owing to packaging constraints of RERconverge in Bioconda, it became necessary to devise a workaround for the manual integration of the library into the R environment.
+
+The image also comes with pre-installed basic Debian tools and essentials for a fully functional Nextflow workflow (refer to Section 7: Nextflow).
+
+For user convenience, CAAStools python prerequisites have been directly integrated into the Micromamba environment, which includes **numpy, scipy, biopython==1.79,** and **dendropy**. Additionally, Radian has been incorporated to provide a contemporary R console interface.
+
+The **workDir** has been designated as CAAStools, ensuring that the container is primed for operations as soon as a volume mount is executed.
+
+## Constructing the CAAStools Docker Image
+
+```bash
+$ docker build -t caastools-micromamba .
+
+```
+## Executing CAAStools with a Mounted Volume
+
+```bash
+$ docker run -it --volume <hostdir>:<containerdir> caastools-micromamba:latest bash
+
+```
+## Launching CAAStools from an External Image
+
+```bash
+$ docker run -it --volume .:/home docker.io/miralnso/caastools-micromamba:latest bash
+```
+
+# 7. Nextflow
+
+Introducing the Nextflow workflow for CAAStools. The primary objective is to alleviate user preliminary tasks by offering a reproducible and ready-to-use environment. This environment is designed to adapt to the computational instance it operates on, while also facilitating a more straightforward and reproducible allocation of computational resources and workload. The pipeline is fully parameterized, accepting parameters either from *nextflow.config* or *modules.config*. These parameters can be either hardcoded or passed as command-line arguments.
+
+The distinct tool-sets (**Discovery, Resample,** and **Bootstrap**) are designed for collective use within the pipeline. However, users can modify this default behavior by commenting out specific workflow executions within the primary CAAStools execution framework (*ct.nf*). Future updates will introduce bypass mechanisms for tool execution by supplying arguments to the pipeline (e.g., nextflow run main.nf --tools discovery,resample,bootstrap --ext.args args).
+
+It's imperative to initiate the pipeline from *main.nf*, which establishes the standard environment for tool execution.
+
+It's noteworthy that the current pipeline is in its nascent stages and will undergo continuous enhancements. As it stands, it's more of a work-in-progress than a fully functional tool. For any substantial tasks, it's recommended to utilize CAAStools.
+
+The Nextflow pipeline has been crafted adhering to the best practices of DSL2.
+
+## Executing CAAStools via Nextflow
+1) Make necessary modifications to *nextflow.config*, *modules.config*, and other relevant scripts.
+2) Execute the pipeline:
+
+```bash
+# If configurations are set in the files, execute as follows:
+
+$ nextflow run main-nf -with-docker
+
+# To override specific parameters:
+## Note: The default output subdirectory structure is $workDir/results/<timestamp>/<tool>/output.out
+
+$ nextflow run main-nf -with-docker --tool discovery,resample --alignment <alignmentsheet.csv/alignment.dir> --output <main.output.dir> --tree <nw_tree> --mode <mode> [...]
+
+```
+
+# 8. License
 
 This software is licensed under GNU General Public License. The kind of license is to be decided with UPF.
 
 
-# 6. How to cite
+# 9. How to cite
 
 The application note for CAAStools is [available as a preprint in bioRxiv](https://doi.org/10.1101/2022.12.14.520422).
 
 
-# 7. How to contact the development team
+# 10. How to contact the development team
 
 For any inquire, please contact Fabio Barteri at Pompeu Fabra University / BBRC [fabio.barteri@upf.edu](mailto:fabio.barteri@upf.edu)
 
