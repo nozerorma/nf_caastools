@@ -27,16 +27,13 @@
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-// Uncomment the following line if you want to use a specific container.
-// params.CONTAINER = "miralnso/caastools-micromamba:latest"
 
 process DISCOVERY {
     tag "$alignmentID"
     
-    // Uncomment the following lines to assign workload priority, container, and output directory.
+    // Uncomment the following lines to assign workload priority.
     // label 'process_medium'
-    // container = params.CONTAINER 
-    // publishDir(params.OUTPUT, mode: 'copy')
+
 
     input:
     tuple val(alignmentID), file(alignmentFile)
