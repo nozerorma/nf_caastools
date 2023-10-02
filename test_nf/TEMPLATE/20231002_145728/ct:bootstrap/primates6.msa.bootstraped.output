@@ -1,0 +1,136 @@
+primates6@3	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@6	13	1000	0.013	b_560,b_652,b_897,b_890,b_455,b_28,b_721,b_237,b_732,b_747,b_512,b_730,b_172	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@7	4	1000	0.004	b_809,b_338,b_243,b_13	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@11	1	1000	0.001	b_89	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@43	7	1000	0.007	b_890,b_721,b_126,b_128,b_851,b_679,b_104	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@46	72	1000	0.072	b_127,b_176,b_560,b_103,b_439,b_801,b_558,b_694,b_21,b_757,b_90,b_652,b_282,b_562,b_342,b_12,b_572,b_897,b_223,b_455,b_565,b_861,b_607,b_611,b_204,b_406,b_809,b_89,b_551,b_648,b_683,b_312,b_721,b_423,b_524,b_622,b_516,b_207,b_237,b_266,b_353,b_552,b_956,b_732,b_60,b_67,b_747,b_243,b_727,b_954,b_521,b_267,b_512,b_749,b_700,b_730,b_754,b_474,b_172,b_584,b_37,b_821,b_699,b_456,b_59,b_686,b_221,b_886,b_978,b_910,b_811,b_921	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@49	32	1000	0.032	b_560,b_868,b_652,b_245,b_562,b_342,b_897,b_890,b_611,b_537,b_406,b_89,b_648,b_934,b_28,b_17,b_312,b_721,b_524,b_237,b_353,b_732,b_942,b_747,b_521,b_512,b_730,b_474,b_172,b_286,b_221,b_348	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@55	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@62	16	1000	0.016	b_73,b_439,b_893,b_41,b_809,b_89,b_338,b_794,b_74,b_307,b_293,b_843,b_398,b_13,b_246,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@64	29	1000	0.029	b_929,b_560,b_314,b_553,b_90,b_188,b_652,b_562,b_897,b_781,b_455,b_809,b_404,b_721,b_20,b_237,b_128,b_160,b_552,b_732,b_417,b_747,b_512,b_624,b_541,b_172,b_13,b_104,b_775	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@77	2	1000	0.002	b_890,b_910	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@78	39	1000	0.039	b_929,b_560,b_188,b_652,b_245,b_562,b_342,b_897,b_890,b_611,b_537,b_406,b_89,b_648,b_934,b_28,b_312,b_404,b_721,b_423,b_524,b_237,b_353,b_128,b_732,b_408,b_747,b_521,b_512,b_730,b_474,b_172,b_286,b_104,b_221,b_348,b_832,b_811,b_497	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@85	5	1000	0.005	b_974,b_11,b_636,b_942,b_720	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@86	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@101	34	1000	0.034	b_560,b_652,b_245,b_562,b_342,b_897,b_890,b_16,b_611,b_537,b_406,b_89,b_648,b_934,b_28,b_312,b_721,b_423,b_524,b_237,b_353,b_732,b_408,b_747,b_521,b_512,b_730,b_474,b_172,b_286,b_221,b_348,b_811,b_497	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@105	28	1000	0.028	b_560,b_652,b_245,b_562,b_342,b_897,b_611,b_406,b_89,b_648,b_934,b_312,b_721,b_423,b_524,b_237,b_353,b_732,b_747,b_521,b_512,b_730,b_474,b_172,b_221,b_348,b_811,b_497	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@121	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@122	39	1000	0.039	b_241,b_614,b_671,b_102,b_802,b_488,b_884,b_4,b_701,b_219,b_963,b_551,b_42,b_721,b_414,b_235,b_674,b_948,b_354,b_726,b_338,b_74,b_293,b_476,b_732,b_276,b_243,b_61,b_271,b_264,b_821,b_173,b_837,b_746,b_221,b_308,b_673,b_978,b_910	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@123	3	1000	0.003	b_901,b_673,b_711	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@124	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@125	2	1000	0.002	b_103,b_89	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@127	4	1000	0.004	b_406,b_89,b_524,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@128	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@129	10	1000	0.01	b_561,b_560,b_188,b_562,b_897,b_455,b_404,b_237,b_747,b_512	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@130	1	1000	0.001	b_89	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@131	54	1000	0.054	b_176,b_844,b_614,b_102,b_802,b_868,b_558,b_694,b_90,b_154,b_443,b_245,b_12,b_572,b_884,b_31,b_607,b_731,b_963,b_826,b_551,b_748,b_644,b_414,b_620,b_965,b_20,b_338,b_237,b_157,b_464,b_741,b_353,b_640,b_489,b_625,b_441,b_243,b_727,b_521,b_61,b_271,b_403,b_512,b_749,b_700,b_259,b_821,b_661,b_59,b_51,b_850,b_585,b_728	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@133	4	1000	0.004	b_406,b_89,b_524,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@169	2	1000	0.002	b_432,b_72	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@180	31	1000	0.031	b_949,b_844,b_257,b_980,b_103,b_558,b_12,b_572,b_890,b_31,b_701,b_607,b_648,b_516,b_916,b_230,b_60,b_471,b_243,b_267,b_568,b_490,b_37,b_821,b_699,b_323,b_221,b_978,b_910,b_728,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@181	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@183	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@184	9	1000	0.009	b_102,b_915,b_524,b_157,b_755,b_686,b_673,b_910,b_711	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@187	2	1000	0.002	b_12,b_607	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@188	1	1000	0.001	b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@189	6	1000	0.006	b_546,b_524,b_674,b_686,b_673,b_711	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@190	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@192	1	1000	0.001	b_910	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@200	6	1000	0.006	b_844,b_558,b_12,b_31,b_607,b_728	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@201	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@203	3	1000	0.003	b_721,b_126,b_851	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@206	42	1000	0.042	b_560,b_314,b_439,b_553,b_893,b_90,b_652,b_245,b_562,b_342,b_897,b_611,b_406,b_809,b_89,b_648,b_934,b_312,b_721,b_423,b_524,b_20,b_237,b_353,b_552,b_732,b_417,b_180,b_749,b_747,b_521,b_512,b_730,b_624,b_474,b_172,b_13,b_221,b_348,b_811,b_497,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@207	19	1000	0.019	b_929,b_560,b_188,b_652,b_562,b_897,b_455,b_664,b_404,b_721,b_237,b_1000,b_128,b_732,b_747,b_512,b_730,b_172,b_104	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@209	16	1000	0.016	b_929,b_560,b_188,b_652,b_562,b_897,b_455,b_404,b_721,b_237,b_128,b_732,b_747,b_512,b_172,b_104	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@210	43	1000	0.043	b_176,b_844,b_614,b_102,b_802,b_868,b_558,b_694,b_90,b_154,b_245,b_884,b_731,b_963,b_826,b_551,b_748,b_644,b_414,b_965,b_20,b_338,b_237,b_157,b_741,b_353,b_640,b_489,b_441,b_243,b_727,b_521,b_61,b_271,b_512,b_749,b_700,b_259,b_821,b_661,b_59,b_51,b_585	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@215	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@216	67	1000	0.067	b_949,b_831,b_241,b_614,b_671,b_974,b_102,b_802,b_392,b_488,b_6,b_50,b_803,b_799,b_884,b_4,b_701,b_219,b_872,b_963,b_406,b_91,b_551,b_990,b_17,b_42,b_721,b_87,b_524,b_414,b_235,b_948,b_354,b_726,b_338,b_74,b_741,b_293,b_476,b_932,b_636,b_732,b_437,b_252,b_276,b_243,b_119,b_521,b_61,b_271,b_264,b_317,b_616,b_363,b_901,b_821,b_173,b_837,b_720,b_216,b_221,b_308,b_673,b_978,b_377,b_910,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@217	3	1000	0.003	b_91,b_293,b_173	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@218	3	1000	0.003	b_295,b_243,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@221	8	1000	0.008	b_909,b_406,b_89,b_644,b_524,b_703,b_243,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@222	3	1000	0.003	b_295,b_243,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@223	29	1000	0.029	b_102,b_340,b_994,b_645,b_210,b_915,b_90,b_897,b_781,b_890,b_809,b_721,b_126,b_157,b_552,b_732,b_122,b_419,b_512,b_730,b_624,b_902,b_616,b_755,b_286,b_686,b_673,b_910,b_711	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@224	5	1000	0.005	b_406,b_89,b_524,b_521,b_348	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@228	5	1000	0.005	b_432,b_72,b_686,b_673,b_711	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@230	6	1000	0.006	b_546,b_406,b_89,b_524,b_674,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@231	6	1000	0.006	b_897,b_406,b_89,b_524,b_521,b_705	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@233	13	1000	0.013	b_103,b_701,b_516,b_243,b_267,b_37,b_821,b_699,b_221,b_978,b_910,b_921,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@234	1	1000	0.001	b_238	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@235	4	1000	0.004	b_406,b_89,b_524,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@236	44	1000	0.044	b_410,b_176,b_844,b_614,b_102,b_802,b_694,b_6,b_655,b_90,b_154,b_245,b_884,b_610,b_963,b_826,b_551,b_644,b_423,b_414,b_20,b_338,b_237,b_157,b_353,b_408,b_441,b_64,b_243,b_727,b_119,b_521,b_61,b_512,b_749,b_700,b_309,b_259,b_616,b_821,b_661,b_59,b_51,b_585	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@237	5	1000	0.005	b_974,b_11,b_636,b_942,b_720	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@238	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@241	2	1000	0.002	b_701,b_699	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@245	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@247	24	1000	0.024	b_929,b_560,b_432,b_655,b_188,b_652,b_562,b_897,b_890,b_590,b_366,b_455,b_28,b_721,b_237,b_307,b_732,b_747,b_512,b_730,b_869,b_452,b_882,b_172	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@249	7	1000	0.007	b_929,b_890,b_406,b_89,b_524,b_468,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@252	2	1000	0.002	b_103,b_72	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@253	14	1000	0.014	b_929,b_560,b_188,b_652,b_562,b_897,b_455,b_721,b_237,b_732,b_747,b_512,b_730,b_172	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@255	4	1000	0.004	b_406,b_89,b_524,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@260	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@264	2	1000	0.002	b_572,b_134	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@265	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@266	46	1000	0.046	b_176,b_844,b_614,b_102,b_802,b_868,b_558,b_694,b_90,b_154,b_245,b_884,b_731,b_963,b_826,b_551,b_748,b_644,b_414,b_965,b_20,b_338,b_237,b_157,b_741,b_353,b_640,b_489,b_441,b_243,b_727,b_521,b_61,b_271,b_512,b_812,b_749,b_700,b_259,b_586,b_821,b_661,b_875,b_59,b_51,b_585	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@268	1	1000	0.001	b_134	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@271	3	1000	0.003	b_897,b_890,b_455	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@274	3	1000	0.003	b_890,b_590,b_483	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@275	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@276	46	1000	0.046	b_241,b_560,b_261,b_931,b_558,b_757,b_652,b_245,b_562,b_342,b_12,b_897,b_890,b_16,b_607,b_611,b_537,b_406,b_91,b_459,b_89,b_648,b_28,b_312,b_721,b_423,b_524,b_207,b_237,b_353,b_956,b_732,b_408,b_747,b_521,b_512,b_730,b_474,b_172,b_456,b_286,b_623,b_221,b_348,b_540,b_811	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@277	1	1000	0.001	b_890	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@279	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@280	100	1000	0.1	b_949,b_176,b_844,b_241,b_560,b_614,b_671,b_102,b_802,b_868,b_558,b_694,b_488,b_90,b_154,b_443,b_245,b_562,b_342,b_897,b_884,b_4,b_890,b_701,b_590,b_219,b_611,b_731,b_963,b_406,b_826,b_89,b_551,b_648,b_934,b_28,b_748,b_312,b_42,b_721,b_644,b_423,b_524,b_414,b_235,b_948,b_354,b_200,b_965,b_20,b_726,b_338,b_237,b_157,b_74,b_293,b_741,b_476,b_353,b_732,b_408,b_640,b_252,b_489,b_441,b_276,b_747,b_243,b_727,b_521,b_61,b_271,b_512,b_749,b_700,b_730,b_259,b_388,b_264,b_474,b_363,b_172,b_821,b_173,b_286,b_837,b_59,b_676,b_221,b_308,b_673,b_978,b_348,b_828,b_51,b_910,b_811,b_711,b_497,b_585	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@281	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@282	59	1000	0.059	b_560,b_314,b_432,b_210,b_655,b_90,b_546,b_154,b_652,b_245,b_342,b_562,b_897,b_884,b_890,b_590,b_611,b_537,b_406,b_106,b_89,b_648,b_934,b_28,b_312,b_721,b_423,b_524,b_674,b_20,b_726,b_237,b_157,b_353,b_552,b_732,b_408,b_417,b_441,b_749,b_747,b_119,b_521,b_512,b_730,b_259,b_624,b_474,b_452,b_616,b_405,b_172,b_286,b_686,b_221,b_348,b_811,b_497,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@283	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@284	3	1000	0.003	b_897,b_404,b_512	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@285	4	1000	0.004	b_890,b_406,b_524,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@286	41	1000	0.041	b_949,b_241,b_614,b_671,b_102,b_802,b_488,b_884,b_4,b_701,b_219,b_963,b_551,b_42,b_721,b_414,b_235,b_948,b_354,b_726,b_338,b_74,b_741,b_293,b_476,b_732,b_252,b_276,b_243,b_61,b_271,b_264,b_363,b_821,b_173,b_837,b_221,b_308,b_673,b_978,b_910	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@289	2	1000	0.002	b_809,b_13	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@290	3	1000	0.003	b_546,b_890,b_674	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@291	7	1000	0.007	b_406,b_472,b_89,b_524,b_353,b_521,b_221	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@294	4	1000	0.004	b_406,b_89,b_524,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@298	3	1000	0.003	b_410,b_890,b_809	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@302	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@308	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@310	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@311	25	1000	0.025	b_929,b_560,b_974,b_392,b_188,b_652,b_562,b_897,b_455,b_17,b_11,b_721,b_947,b_965,b_237,b_238,b_636,b_732,b_942,b_747,b_512,b_730,b_172,b_720,b_784	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@312	13	1000	0.013	b_176,b_779,b_670,b_663,b_154,b_406,b_66,b_42,b_524,b_464,b_201,b_521,b_728	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@314	7	1000	0.007	b_847,b_406,b_89,b_524,b_414,b_521,b_786	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@317	7	1000	0.007	b_546,b_721,b_674,b_126,b_128,b_851,b_104	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@318	4	1000	0.004	b_360,b_620,b_338,b_728	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@321	3	1000	0.003	b_406,b_521,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@322	5	1000	0.005	b_974,b_11,b_636,b_942,b_720	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@323	1	1000	0.001	b_558	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@325	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@349	1	1000	0.001	b_89	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@355	62	1000	0.062	b_949,b_241,b_614,b_103,b_671,b_974,b_102,b_802,b_392,b_893,b_488,b_6,b_803,b_799,b_884,b_4,b_701,b_219,b_872,b_963,b_809,b_91,b_551,b_42,b_721,b_414,b_235,b_948,b_354,b_516,b_338,b_234,b_74,b_741,b_293,b_476,b_499,b_636,b_732,b_437,b_252,b_180,b_276,b_243,b_61,b_271,b_264,b_363,b_821,b_173,b_13,b_837,b_487,b_720,b_216,b_221,b_308,b_673,b_978,b_910,b_921,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@356	1	1000	0.001	b_134	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@358	47	1000	0.047	b_949,b_241,b_614,b_671,b_102,b_802,b_558,b_488,b_884,b_4,b_701,b_219,b_909,b_963,b_683,b_551,b_288,b_721,b_414,b_235,b_948,b_354,b_327,b_726,b_338,b_783,b_74,b_741,b_293,b_476,b_732,b_252,b_276,b_243,b_749,b_72,b_61,b_271,b_264,b_363,b_821,b_173,b_837,b_221,b_308,b_673,b_910	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@359	4	1000	0.004	b_406,b_89,b_524,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@361	32	1000	0.032	b_560,b_340,b_652,b_245,b_562,b_342,b_897,b_725,b_611,b_406,b_472,b_89,b_648,b_934,b_312,b_721,b_423,b_524,b_237,b_353,b_128,b_732,b_747,b_521,b_512,b_730,b_474,b_172,b_221,b_348,b_811,b_497	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@364	42	1000	0.042	b_176,b_560,b_694,b_33,b_652,b_328,b_245,b_562,b_342,b_796,b_565,b_611,b_885,b_406,b_826,b_89,b_648,b_934,b_75,b_644,b_423,b_524,b_218,b_414,b_622,b_237,b_157,b_353,b_732,b_764,b_463,b_243,b_747,b_521,b_474,b_363,b_666,b_59,b_221,b_348,b_811,b_497	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@366	21	1000	0.021	b_560,b_188,b_652,b_245,b_562,b_897,b_89,b_934,b_404,b_721,b_423,b_237,b_353,b_128,b_732,b_747,b_512,b_474,b_172,b_104,b_497	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@367	2	1000	0.002	b_809,b_13	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@372	16	1000	0.016	b_929,b_560,b_188,b_652,b_562,b_897,b_455,b_404,b_721,b_237,b_128,b_732,b_747,b_512,b_172,b_104	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@378	1	1000	0.001	b_620	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@386	18	1000	0.018	b_410,b_257,b_645,b_546,b_192,b_281,b_890,b_725,b_91,b_89,b_947,b_674,b_234,b_489,b_512,b_405,b_173,b_720	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@391	36	1000	0.036	b_560,b_974,b_652,b_245,b_562,b_342,b_897,b_611,b_406,b_89,b_648,b_934,b_17,b_312,b_11,b_721,b_947,b_423,b_524,b_965,b_237,b_353,b_636,b_732,b_942,b_747,b_521,b_512,b_730,b_474,b_172,b_720,b_221,b_348,b_811,b_497	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@394	25	1000	0.025	b_736,b_167,b_974,b_588,b_406,b_89,b_42,b_524,b_674,b_374,b_58,b_744,b_876,b_636,b_538,b_625,b_479,b_521,b_555,b_173,b_676,b_720,b_673,b_978,b_711	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@406	5	1000	0.005	b_432,b_72,b_686,b_673,b_711	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@408	64	1000	0.064	b_929,b_257,b_129,b_560,b_314,b_671,b_588,b_553,b_488,b_641,b_915,b_90,b_803,b_188,b_652,b_562,b_897,b_884,b_192,b_781,b_514,b_113,b_455,b_520,b_91,b_57,b_404,b_721,b_965,b_20,b_234,b_237,b_157,b_849,b_307,b_293,b_128,b_372,b_552,b_636,b_732,b_971,b_489,b_417,b_747,b_512,b_399,b_416,b_270,b_859,b_624,b_415,b_387,b_541,b_882,b_172,b_901,b_699,b_173,b_104,b_273,b_775,b_746,b_146	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@413	11	1000	0.011	b_176,b_90,b_663,b_154,b_948,b_464,b_201,b_99,b_418,b_815,b_526	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@423	8	1000	0.008	b_974,b_803,b_91,b_704,b_372,b_636,b_173,b_720	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@427	43	1000	0.043	b_176,b_844,b_614,b_102,b_802,b_868,b_558,b_694,b_90,b_154,b_245,b_884,b_731,b_963,b_826,b_551,b_748,b_644,b_414,b_965,b_20,b_338,b_237,b_157,b_741,b_353,b_640,b_489,b_441,b_243,b_727,b_521,b_61,b_271,b_512,b_749,b_700,b_259,b_821,b_661,b_59,b_51,b_585	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@444	43	1000	0.043	b_176,b_844,b_614,b_102,b_802,b_868,b_558,b_694,b_90,b_154,b_245,b_884,b_731,b_963,b_826,b_551,b_748,b_644,b_414,b_965,b_20,b_338,b_237,b_157,b_741,b_353,b_640,b_489,b_441,b_243,b_727,b_521,b_61,b_271,b_512,b_749,b_700,b_259,b_821,b_661,b_59,b_51,b_585	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@450	2	1000	0.002	b_890,b_590	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@453	31	1000	0.031	b_641,b_652,b_245,b_562,b_342,b_897,b_890,b_611,b_537,b_89,b_648,b_934,b_312,b_423,b_237,b_157,b_783,b_794,b_853,b_353,b_764,b_408,b_521,b_512,b_730,b_415,b_286,b_221,b_811,b_711,b_497	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@454	4	1000	0.004	b_406,b_89,b_524,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@467	22	1000	0.022	b_929,b_101,b_641,b_915,b_188,b_652,b_562,b_897,b_360,b_455,b_57,b_404,b_338,b_237,b_849,b_865,b_512,b_227,b_104,b_273,b_673,b_711	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@472	1	1000	0.001	b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@481	16	1000	0.016	b_929,b_560,b_188,b_652,b_562,b_897,b_455,b_404,b_721,b_237,b_128,b_732,b_747,b_512,b_172,b_104	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@486	34	1000	0.034	b_560,b_652,b_245,b_562,b_342,b_897,b_890,b_611,b_537,b_406,b_89,b_648,b_934,b_28,b_312,b_721,b_423,b_524,b_237,b_353,b_732,b_408,b_747,b_521,b_512,b_730,b_474,b_172,b_286,b_221,b_348,b_887,b_811,b_497	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@487	1	1000	0.001	b_89	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@495	1	1000	0.001	b_590	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@521	0	1000	0.0		/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@535	3	1000	0.003	b_406,b_524,b_521	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@546	35	1000	0.035	b_949,b_614,b_103,b_102,b_392,b_893,b_602,b_799,b_890,b_701,b_872,b_963,b_551,b_414,b_235,b_516,b_741,b_476,b_437,b_252,b_180,b_243,b_61,b_363,b_901,b_821,b_114,b_487,b_216,b_221,b_673,b_978,b_910,b_921,b_163	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
+primates6@550	27	1000	0.027	b_176,b_868,b_694,b_90,b_154,b_443,b_572,b_884,b_748,b_414,b_620,b_20,b_338,b_464,b_741,b_353,b_640,b_625,b_61,b_403,b_749,b_700,b_259,b_821,b_59,b_850,b_585	/home/miguel/TFM/Master_projects/nf_caastools/examples/config.tab
