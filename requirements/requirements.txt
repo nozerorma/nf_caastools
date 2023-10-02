@@ -1,9 +1,0 @@
-# Discovery/Bootstrap
-biopython==1.79
-scipy
-numpy
-
-# Resample
-Dendropy 
-
-# Explore the idea of adding radian package for an actually useful R console
