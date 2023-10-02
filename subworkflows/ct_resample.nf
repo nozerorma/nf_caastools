@@ -51,7 +51,7 @@ process RESAMPLE {
     } else if (params.strategy == "TEMPLATE") {
         strategyCommand = "--bytemp ${params.template} -m random"
     } else if (params.strategy == "PHYLORESTRICTED") {
-        strategyCommand = "--bytemp ${params.template} --limit_by_group ${params.bygroup}"
+        strategyCommand = "--bytemp ${params.template} --limit_by_group ${params.bygroup} -m random"
     } else if (params.strategy == "BM") {
         strategyCommand = "--bytemp ${params.template} --traitvalues ${params.traitvalues} --mode bm"
     } else {

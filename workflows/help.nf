@@ -56,7 +56,7 @@ Discovery Tool Help
 =============================================
 Detects Convergent Amino Acid Substitutions (CAAS) from a single Multiple Sequence Alignment (MSA).
 
-Usage (all parameters must be contained inside ""):
+Usage:
 --alignment             <"input_dir">                           null
 --traitfile             <"traitfile">                           null
 --ali_format            <"ali_format">                          null
@@ -75,22 +75,28 @@ Resample Tool Help
 =============================================
 Resamples virtual phenotypes for CAAS bootstrap analysis.
 
-Usage (all parameters must be contained inside ""):
---tree                  <"nwtree_file">                         null
---strategy              <"FGBG|TEMPLATE|PHYLORESTRICTED|BM">     null
---fgsize                <"INTEGER">                             null
+Usage:
+--tree                  <"nwtree_file">                         ${params.tree}
+--strategy              <"FGBG|TEMPLATE|PHYLORESTRICTED|BM">    ${params.strategy}
+--fgsize                <"INTEGER">                             ${params.fgsize}
 --bgsize                <"INTEGER">                             null
 --template              <"template_file">                       null
 --bygroup               <"grouping_file">                       null
 --traitvalues           <"traitvalues_file">                    null
 --cycles                <"INTEGER">                             "1000"
+
+Strategy requirements:
+FGBG                    --fgsize --bgsize
+TEMPLATE                --template
+PHYLORESTRICTED         --bytemp --limit_by_group
+BM                      --bytemp --traitvalues
 '''
 
 def bootstrap_help = '''
 Bootstrap Tool Help
 =============================================
 Runs CAAS bootstrap analysis on a single MSA.
-Usage (all parameters must be contained inside ""):
+Usage:
 --resample_out          <"resampledFile">                       null
 
 # Common parameters with alignment tool
