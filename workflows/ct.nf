@@ -28,11 +28,13 @@
  */
 
 
-// Define the output folders
+// Define the alignment channel align_tuple
 align_tuple = Channel
                 .fromPath("${params.alignment}/*")
                 .map { file -> tuple(file.baseName, file) }
 
+// Define the tree file channel (maybe these could be transformed in to a tuple fashion as the alignments)
+// The logic behind this should be checked. Are we using different traitfiles, trees, templates, **groupings**, or traitvalues?
 nw_tree = file(params.tree)
 
 // Import local modules/subworkflows
