@@ -36,7 +36,6 @@
 nextflow.enable.dsl = 2
 
 version = "0.0.1"
-params.help = false  // Prevents a warning of undefined parameter
 
 // Display input parameters
 log.info """
@@ -53,56 +52,7 @@ CAASTOOL - N F PIPELINE  ~  version ${version}
                  David de Juan (david.juan@upf.edu),
                  Miguel Ramon (miguel.ramon@upf.edu) - Nextflow Protocol Elaboration
 
- File: main.nf
-
 """
-
-
-// Display help message if --help parameter is used in the command line
-if (params.help) {
-    log.info '''
-        CAASTOOLS version 0.9 (beta)
-        Convergent Amino Acid Substitution detection and analysis TOOLbox
-
-        General usage:          > ct [tool] [options]
-        Help for single tool:   > ct [tool] --help
-
-        Tools           Description
-        --------        -------------------------------------------------
-        discovery       Detects Convergent Amino Acid Substitutions (CAAS) from
-                        a single Multiple Sequence Alignment (MSA).
-
-        resample        Resamples virtual phenotypes for CAAS bootstrap analysis.
-
-        bootstrap       Runs CAAS bootstrap analysis on a on a single MSA.
-''' 
-    exit 1
-}
-
-
-/*
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *  VALIDATE & PRINT PARAMETER SUMMARY: This section handles parameter validation and help messages.
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
-/* include { validateParameters; paramsHelp } from 'plugin/nf-validation'
-
-// Print help message if needed
-if (params.help) {
-    def logo = NfcoreTemplate.logo(workflow, params.monochrome_logs)
-    def citation = '\n' + WorkflowMain.citation(workflow) + '\n'
-    def String command = "nextflow run ${workflow.manifest.name} --input samplesheet.csv --genome GRCh37 -profile docker"
-    log.info logo + paramsHelp(command) + citation + NfcoreTemplate.dashedLine(params.monochrome_logs)
-    System.exit(0)
-}
-
-// Validate input parameters
-if (params.validate_params) {
-    validateParameters()
-} */
-
-// WorkflowMain.initialise(workflow, params, log)
 
 /*
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -110,6 +60,7 @@ if (params.validate_params) {
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
+include {HELP} from './workflows/help.nf'
 include { CT } from './workflows/ct.nf'
 
 /*
@@ -120,8 +71,14 @@ include { CT } from './workflows/ct.nf'
 
 workflow {
 
-    CT ()
+    // Check if --help is provided
+    if (params.help) {
+        HELP ()
+    } else {
+        CT ()
+    }
 }
+
 
 /*
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
