@@ -744,9 +744,9 @@ $ docker run -it --volume .:/home docker.io/miralnso/caastools-micromamba:latest
 
 # 7. Nextflow
 
-Introducing the Nextflow workflow for CAAStools. The primary objective is to alleviate user preliminary tasks by offering a reproducible and ready-to-use environment. This environment is designed to adapt to the computational instance it operates on, while also facilitating a more straightforward and reproducible allocation of computational resources and workload. The pipeline is fully parameterized, accepting parameters either from *nextflow.config* or *modules.config*. These parameters can be either hardcoded or passed as command-line arguments.
+Introducing the Nextflow workflow for CAAStools. The primary objective is to alleviate user preliminary tasks by offering a reproducible and ready-to-use environment. This environment is designed to adapt to the computational instance it operates on, while also facilitating a more straightforward and reproducible allocation of computational resources and workload. The pipeline is fully parameterized, accepting parameters either from *nextflow.config*. These parameters can be either hardcoded or passed as command-line arguments.
 
-The distinct tool-sets (**Discovery, Resample,** and **Bootstrap**) are designed for collective use within the pipeline. However, users can modify this default behavior by commenting out specific workflow executions within the primary CAAStools execution framework (*ct.nf*). Future updates will introduce bypass mechanisms for tool execution by supplying arguments to the pipeline (e.g., nextflow run main.nf --tools discovery,resample,bootstrap --ext.args args) (**already streamlined***).
+The distinct tool-sets (**Discovery, Resample,** and **Bootstrap**) are designed for collective use within the pipeline. However, users can modify this default behavior by commenting out specific workflow executions within the primary CAAStools execution framework (*ct.nf*). Any parameter can be inputed directly as an argument when running the tool.
 
 It's imperative to initiate the pipeline from *main.nf*, which establishes the standard environment for tool execution.
 
@@ -761,12 +761,15 @@ The Nextflow pipeline has been crafted adhering to the best practices of DSL2.
 ```bash
 # If configurations are set in the files, execute as follows:
 
-$ nextflow run main-nf -with-docker
+$ nextflow run main.nf -with-docker
 
 # To override specific parameters:
 ## Note: The default output subdirectory structure is $workDir/results/<timestamp>/<tool>/output.out
 
-$ nextflow run main-nf -with-docker --tool <discovery,resample,bootstrap> --alignment <alignmentsheet.csv/alignment.dir> --output <main.output.dir> --tree <nw_tree> --mode <mode> [...]
+$ nextflow run main.nf -with-docker --ct_tool <"discovery,resample,bootstrap"> --alignment <alignmentsheet.csv/alignment.dir> --output <main.output.dir> --tree <nw_tree> --mode <mode> [...]
+
+# Display help
+$ nextflow un main.nf -with-docker --help (--ct_tool <"tool">) # tool can be specified for individual use-case help 
 
 ```
 
