@@ -744,13 +744,13 @@ $ docker run -it --volume .:/home docker.io/miralnso/caastools-micromamba:latest
 
 # 7. Nextflow
 
-Introducing the Nextflow workflow for CAAStools. The primary objective is to alleviate user preliminary tasks by offering a reproducible and ready-to-use environment. This environment is designed to adapt to the computational instance it operates on, while also facilitating a more straightforward and reproducible allocation of computational resources and workload. The pipeline is fully parameterized, accepting parameters either from *nextflow.config*. These parameters can be either hardcoded or passed as command-line arguments.
+Introducing the Nextflow workflow for CAAStools. The primary objective is to alleviate user preliminary tasks by offering a reproducible and ready-to-use environment. This environment is designed to adapt to the computational instance it operates on, while also facilitating a more straightforward and reproducible allocation of computational resources and workload. The pipeline is fully parameterized; any possible options should be either hardcoded in *nextflow.config* or passed as command-line arguments.
 
-The distinct tool-sets (**Discovery, Resample,** and **Bootstrap**) are designed for collective use within the pipeline. However, users can modify this default behavior by commenting out specific workflow executions within the primary CAAStools execution framework (*ct.nf*). Any parameter can be inputed directly as an argument when running the tool.
+The distinct tool-sets (**Discovery, Resample,** and **Bootstrap**) are designed for collective use within the pipeline. However, users can modify this default behavior by running the pipeline together with the --ct_tool option, followed by the set of tools to be used (separated by commas); as referred before, any parameter can be input directly as an argument when running the tool (ie. `--ct_tool <tool1,tool2> --alignment <alignment_dir> --other_parameters <value>`).
 
-It's imperative to initiate the pipeline from *main.nf*, which establishes the standard environment for tool execution.
+It's imperative to initiate the pipeline from *main.nf*, which establishes the standard environment for tool execution. A help prompt can be shown by using the argument --help. Particular help prompts per tool can be called by using together the *ct_tool* and *help* arguments `(ie. --ct_tool discovery --help)`
 
-It's noteworthy that the current pipeline is in its nascent stages and will undergo continuous enhancements. As it stands, it's more of a work-in-progress than a fully functional tool. For any substantial tasks, it's recommended to utilize CAAStools.
+It's noteworthy that the current pipeline is in its nascent stages and will undergo continuous enhancements. As it stands, it's more of a work-in-progress than a fully functional tool. For any substantial tasks, it's recommended to utilize CAAStools. 
 
 The Nextflow pipeline has been crafted adhering to the best practices of DSL2.
 
@@ -766,10 +766,10 @@ $ nextflow run main.nf -with-docker
 # To override specific parameters:
 ## Note: The default output subdirectory structure is $workDir/results/<timestamp>/<tool>/output.out
 
-$ nextflow run main.nf -with-docker --ct_tool <"discovery,resample,bootstrap"> --alignment <alignmentsheet.csv/alignment.dir> --output <main.output.dir> --tree <nw_tree> --mode <mode> [...]
+$ nextflow run main.nf -with-docker --ct_tool <discovery,resample,bootstrap> --alignment <alignmentsheet_csv/alignment_dir> --output <outdir> --tree <nw_tree> --mode <mode> [...]
 
 # Display help
-$ nextflow un main.nf -with-docker --help (--ct_tool <"tool">) # tool can be specified for individual use-case help 
+$ nextflow un main.nf -with-docker --help (--ct_tool <tool>) # tool can be specified for individual use-case help 
 
 ```
 
