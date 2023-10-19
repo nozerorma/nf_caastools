@@ -8,7 +8,7 @@
 #   | (_| (_| | (_| \__ \ || (_) | (_) | \__ \
 #   \___\__,_|\__,_|___/\__\___/ \___/|_|___/
 #
-# A Convergent Amino Acid Substitution identification 
+# A Convergent Amino Acid Substitution identification
 # and analysis toolbox
 #
 # Author:         Fabio Barteri (fabio.barteri@upf.edu)
@@ -30,7 +30,7 @@
 
 process DISCOVERY {
     tag "$alignmentID"
-    
+
     // Uncomment the following lines to assign workload priority.
     // label 'process_medium'
 
@@ -45,12 +45,25 @@ process DISCOVERY {
     // Define extra discovery arguments from params.file
     def args = task.ext.args ?: ''
 
-    """    
+    """
     ct discovery \\
         -a ${alignmentFile} \\
         -t ${params.traitfile} \\
         -o ${alignmentID}.output \\
         --fmt ${params.ali_format} \\
         ${args.replaceAll('\n', ' ')}
+    """
+}
+
+process AGGREGATE {
+    input:
+    file('*output') from DISCOVERY.out.collect()
+
+    output:
+    file("discovery.output")
+
+    script:
+    """
+    cat *output > discovery.output
     """
 }
