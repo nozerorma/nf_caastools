@@ -30,7 +30,8 @@
 
 // Define the alignment channel align_tuple
 align_tuple = Channel
-                .fromPath("${params.alignment}/*")
+                .fromPath("${params.alignment}/**/*")
+                .filter { it.isFile() } // Filter out directories
                 .map { file -> tuple(file.baseName, file) }
 
 // Define the tree file channel (maybe these could be transformed in to a tuple fashion as the alignments)
