@@ -35,7 +35,7 @@ process BOOTSTRAP {
     file(resampledFile)
     
     output:
-    tuple val(alignmentID), file("${alignmentID}.bootstraped.output")
+    tuple val(alignmentID), file("${alignmentID}.bootstraped.output"), optional: true
 
     script:
     def args = task.ext.args ?: ''

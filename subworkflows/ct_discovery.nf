@@ -39,7 +39,7 @@ process DISCOVERY {
     tuple val(alignmentID), file(alignmentFile)
 
     output:
-    tuple val(alignmentID), file("${alignmentID}.output")
+    tuple val(alignmentID), file("${alignmentID}.output"), optional: true
 
     script:
     // Define extra discovery arguments from params.file
