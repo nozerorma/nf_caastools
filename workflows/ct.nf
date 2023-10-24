@@ -49,7 +49,6 @@ def toolsToRun = params.ct_tool.split(',')
 workflow CT {
     if (toolsToRun.contains('discovery')) {
         discovery_out = DISCOVERY(align_tuple)
-        aggregate_out = AGGREGATE(discovery_out)
     }
     if (toolsToRun.contains('resample')) {
         resample_out = RESAMPLE(nw_tree)
