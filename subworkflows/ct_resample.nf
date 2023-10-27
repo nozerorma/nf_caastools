@@ -32,7 +32,7 @@ process RESAMPLE {
     tag "$nw_tree"
 
     // Uncomment the following lines to assign workload priority.
-    // label 'process_medium'
+    //label 'big_mem'
 
 
     input:
@@ -59,7 +59,7 @@ process RESAMPLE {
     }
 
     """
-    ct resample \\
+    /usr/local/bin/_entrypoint.sh ct resample \\
         -p ${nw_tree} \\
         -o ${nw_tree}.resampled.output \\
         ${strategyCommand} \\

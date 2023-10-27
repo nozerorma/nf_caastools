@@ -29,6 +29,8 @@
 
 process BOOTSTRAP {
     tag "$alignmentID"
+    label 'big_mem'
+
     
     input:
     tuple val(alignmentID), file(alignmentFile)
@@ -41,7 +43,7 @@ process BOOTSTRAP {
     def args = task.ext.args ?: ''
 
     """    
-    ct bootstrap \\
+    /usr/local/bin/_entrypoint.sh ct bootstrap \\
         -a ${alignmentFile} \\
         -t ${params.traitfile} \\
         -s ${resampledFile} \\

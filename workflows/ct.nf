@@ -34,14 +34,13 @@ align_tuple = Channel
                 .filter { it.isFile() } // Filter out directories
                 .map { file -> tuple(file.baseName, file) }
 
-// Define the tree file channel (maybe these could be transformed in to a tuple fashion as the alignments)
-// The logic behind this should be checked. Are we using different traitfiles, trees, templates, **groupings**, or traitvalues?
+// Define the tree file channel
 nw_tree = file(params.tree)
 
 // Import local modules/subworkflows
-include { DISCOVERY } from "${baseDir}/subworkflows/ct_discovery" addParams(ALIGN_TUPLE: align_tuple, LABEL:"twocpus")
-include { RESAMPLE } from "${baseDir}/subworkflows/ct_resample" addParams(NW_TREE: nw_tree, LABEL:"twocpus")
-include { BOOTSTRAP } from "${baseDir}/subworkflows/ct_bootstrap" addParams(ALIGN_TUPLE: align_tuple, LABEL:"twocpus")
+include { DISCOVERY } from "${baseDir}/subworkflows/ct_discovery" addParams(ALIGN_TUPLE: align_tuple)
+include { RESAMPLE } from "${baseDir}/subworkflows/ct_resample" addParams(NW_TREE: nw_tree)
+include { BOOTSTRAP } from "${baseDir}/subworkflows/ct_bootstrap" addParams(ALIGN_TUPLE: align_tuple)
 
 // Main workflow
 def toolsToRun = params.ct_tool.split(',')

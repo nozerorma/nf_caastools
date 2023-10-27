@@ -32,7 +32,7 @@ process DISCOVERY {
     tag "$alignmentID"
 
     // Uncomment the following lines to assign workload priority.
-    // label 'process_medium'
+    label 'big_mem'
 
 
     input:
@@ -46,24 +46,11 @@ process DISCOVERY {
     def args = task.ext.args ?: ''
 
     """
-    ct discovery \\
+        /usr/local/bin/_entrypoint.sh ct discovery \\
         -a ${alignmentFile} \\
         -t ${params.traitfile} \\
         -o ${alignmentID}.output \\
         --fmt ${params.ali_format} \\
         ${args.replaceAll('\n', ' ')}
-    """
-}
-
-process AGGREGATE {
-    input:
-    file('*output') from DISCOVERY.out.collect()
-
-    output:
-    file("discovery.output")
-
-    script:
-    """
-    cat *output > discovery.output
     """
 }
