@@ -29,7 +29,7 @@
 
 process BOOTSTRAP {
     tag "$alignmentID"
-    label 'big_mem'
+    //label 'big_mem'
 
     
     input:
