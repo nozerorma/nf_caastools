@@ -1,23 +1,20 @@
 #!/usr/bin/env nextflow
 
 /*
-#                          _              _
-#                         | |            | |
-#      ___ __ _  __ _ ___| |_ ___   ___ | |___
-#    / __/ _` |/ _` / __| __/ _ \ / _ \| / __|
-#   | (_| (_| | (_| \__ \ || (_) | (_) | \__ \
-#   \___\__,_|\__,_|___/\__\___/ \___/|_|___/
 #
-# A Convergent Amino Acid Substitution identification 
-# and analysis toolbox - Nextflow edition
+#  PPP   H   H  Y   Y  L     L   Y   Y
+#  P  P  H   H   Y Y   L     L    Y Y
+#  PPP   HHHHH    Y    L     L     Y
+#  P     H   H    Y    L     L     Y
+#  P     H   H    Y    LLLL  LLLL  Y
 #
-# Github: https://github.com/nozerorma/caastools/blob/nextflow-rize
 #
-# Author:         Fabio Barteri (fabio.barteri@upf.edu)
-# Contributors:   Alejandro Valenzuela (alejandro.valenzuela@upf.edu),
-#                 Xavier Farré (xfarrer@igtp.cat),
-#                 David de Juan (david.juan@upf.edu),
-#                 Miguel Ramon (miguel.ramon@upf.edu) - Nextflow Protocol Elaboration
+# A Nextflow pipeline including a complete set
+# of phylogenetic comparative tools and analyses
+#
+# Github: https://github.com/nozerorma/caastools/nf-phylly
+#
+# Author:         Miguel Ramon (miguel.ramon@upf.edu)
 #
 # File: main.nf
 #
@@ -25,11 +22,11 @@
 
 /*
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * CAAStools: A cutting-edge bioinformatics pipeline tailored for the identification and 
- * analysis of Convergent Amino Acid Substitutions (CAAS) in evolutionary studies. 
- * Harnessing the power of Nextflow, CAAStools offers seamless integration across 
- * multiple platforms, ensuring reproducibility and scalability for large-scale genomic 
- * datasets. Dive into a world of evolutionary insights with CAAStools!
+ *
+ * Unlock the secrets of evolutionary relationships with Phylly! 🌳🔍 This Nextflow pipeline
+ * packs a powerful punch, offering a comprehensive suite of phylogenetic comparative tools
+ * and analyses. Dive into the world of evolutionary biology like never before and elevate
+ * your research to new heights! 🚀🧬 #Phylly #EvolutionaryInsights #NextflowPipeline
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
@@ -43,7 +40,7 @@ log.info """
 CAASTOOL - N F PIPELINE  ~  version ${version}
 =============================================
 
- A Convergent Amino Acid Substitution identification 
+ A Convergent Amino Acid Substitution identification
  and analysis toolbox
 
  Author:         Fabio Barteri (fabio.barteri@upf.edu)
@@ -61,7 +58,9 @@ CAASTOOL - N F PIPELINE  ~  version ${version}
  */
 
 include {HELP} from './workflows/help.nf'
-include { CT } from './workflows/ct.nf'
+include {CT} from './workflows/ct.nf'
+include {RERCONVERGE} from './workflows/rerconverge.nf'
+include {ORA} from './workflows/ora.nf'
 
 /*
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,8 +73,12 @@ workflow {
     // Check if --help is provided
     if (params.help) {
         HELP ()
-    } else {
+    } elif {
         CT ()
+    } elif {
+        RERCONVERGE()
+    } elif {
+        ORA
     }
 }
 
