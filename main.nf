@@ -73,13 +73,13 @@ workflow {
     // Check if --help is provided
     if (params.help) {
         HELP ()
-    } elif {
+    } else if (params.ct_tool){
         CT ()
-    } elif {
-        RERCONVERGE()
-    } elif {
-        ORA
-    }
+    } else if (params.rerconverge) {
+        RER_MAIN()
+    } /* else if (params.ora) {
+        ORA()
+    } */
 }
 
 
