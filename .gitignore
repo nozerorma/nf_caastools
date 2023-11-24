@@ -18,3 +18,5 @@ Data
 Out
 singularity
 slurm*
+.vscode/settings.json
+subworkflows/RERCONVERGE/scripts/phylophere.code-workspace
