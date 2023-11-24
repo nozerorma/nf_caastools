@@ -2,15 +2,17 @@
 
 /*
 #
-#  PPP   H   H  Y   Y  L     L   Y   Y
-#  P  P  H   H   Y Y   L     L    Y Y
-#  PPP   HHHHH    Y    L     L     Y
-#  P     H   H    Y    L     L     Y
-#  P     H   H    Y    LLLL  LLLL  Y
 #
-#
-# A Nextflow pipeline including a complete set
-# of phylogenetic comparative tools and analyses
+#  ██████╗ ██╗  ██╗██╗   ██╗██╗      ██████╗ ██████╗ ██╗  ██╗███████╗██████╗ ███████╗
+#  ██╔══██╗██║  ██║╚██╗ ██╔╝██║     ██╔═══██╗██╔══██╗██║  ██║██╔════╝██╔══██╗██╔════╝
+#  ██████╔╝███████║ ╚████╔╝ ██║     ██║   ██║██████╔╝███████║█████╗  ██████╔╝█████╗  
+#  ██╔═══╝ ██╔══██║  ╚██╔╝  ██║     ██║   ██║██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗██╔══╝  
+#  ██║     ██║  ██║   ██║   ███████╗╚██████╔╝██║     ██║  ██║███████╗██║  ██║███████╗
+#  ╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
+#                                                                                    
+#                                      
+# PHYLOPHERE: A Nextflow pipeline including a complete set
+# of phylogenetic comparative tools and analyses for Phenome-Genome studies
 #
 # Github: https://github.com/nozerorma/caastools/nf-phylly
 #

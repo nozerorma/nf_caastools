@@ -1,3 +1,6 @@
+#!/usr/bin/env nextflow
+
+/*
 #
 #
 #  ██████╗ ██╗  ██╗██╗   ██╗██╗      ██████╗ ██████╗ ██╗  ██╗███████╗██████╗ ███████╗
@@ -15,43 +18,40 @@
 #
 # Author:         Miguel Ramon (miguel.ramon@upf.edu)
 #
-# File: build_rer_trait.R
+# File: rer_analysis.R
 #
+*/
 
-# Set directories
-## Pass as arg from nextflow config, should be $baseDir
-setwd("/home/miguel/TFM/Master_projects/NEOPLASY_PRIMATES")
-getwd()
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  DISCOVERY module: This module is responsible for the discovery process based on input alignments.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 
-workingDir <- getwd()
-dataDir <- file.path(workingDir, "Data")
-resultsDir <- file.path(workingDir, "Out")
 
-# Load libraries
-library(dplyr)
+process DISCOVERY {
+    tag "$alignmentID"
 
-# Load traitfile
-## Pass as arg from nextflow config, should be
-cancer_traits <- read.csv(file.path(dataDir, "Phase_I-In-silico-analysis/Neoplasia_species360/species360_primates_neoplasia_20230519.csv"))
+    // Uncomment the following lines to assign workload priority.
+    // label 'big_mem'
 
-## Remove whitespaces
-cancer_traits[] <- lapply(cancer_traits, function(col) trimws(col))
 
-## Binarize names
-cancer_traits$species <- gsub(" ", "_", cancer_traits$species)
+    input:
+    tuple val(alignmentID), file(alignmentFile)
 
-## Reorder and filter species
-cancer_traits <- cancer_traits %>%
-  select(species,neoplasia_prevalence) %>%
-  filter(!is.na(neoplasia_prevalence))
+    output:
+    tuple val(alignmentID), file("${alignmentID}.output"), optional: true
 
-# Select only those columns of interest and build named vector
-neoplasia_vector <- setNames(as.numeric(cancer_traits$neoplasia_prevalence), cancer_traits$species)
-head(neoplasia_vector)
+    script:
+    // Define extra discovery arguments from params.file
+    def args = task.ext.args ?: ''
 
-# Write the generated vector
-## Parameterize to traits_continuous
-neoplasiaPath <- file.path(dataDir, "Phase_I-In-silico-analysis/Neoplasia_species360/neoplasia_vector_RER.RData")
-save(neoplasia_vector, file = neoplasiaPath)
-
-### DONE ###
+    """
+        /usr/local/bin/_entrypoint.sh ct discovery \\
+        -a ${alignmentFile} \\
+        -t ${params.traitfile} \\
+        -o ${alignmentID}.output \\
+        --fmt ${params.ali_format} \\
+        ${args.replaceAll('\n', ' ')}
+    """
+}

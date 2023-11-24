@@ -2,15 +2,17 @@
 
 /*
 #
-#  PPP   H   H  Y   Y  L     L   Y   Y
-#  P  P  H   H   Y Y   L     L    Y Y
-#  PPP   HHHHH    Y    L     L     Y
-#  P     H   H    Y    L     L     Y
-#  P     H   H    Y    LLLL  LLLL  Y
 #
-#
-# A Nextflow pipeline including a complete set
-# of phylogenetic comparative tools and analyses
+#  ██████╗ ██╗  ██╗██╗   ██╗██╗      ██████╗ ██████╗ ██╗  ██╗███████╗██████╗ ███████╗
+#  ██╔══██╗██║  ██║╚██╗ ██╔╝██║     ██╔═══██╗██╔══██╗██║  ██║██╔════╝██╔══██╗██╔════╝
+#  ██████╔╝███████║ ╚████╔╝ ██║     ██║   ██║██████╔╝███████║█████╗  ██████╔╝█████╗  
+#  ██╔═══╝ ██╔══██║  ╚██╔╝  ██║     ██║   ██║██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗██╔══╝  
+#  ██║     ██║  ██║   ██║   ███████╗╚██████╔╝██║     ██║  ██║███████╗██║  ██║███████╗
+#  ╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
+#                                                                                    
+#                                      
+# PHYLOPHERE: A Nextflow pipeline including a complete set
+# of phylogenetic comparative tools and analyses for Phenome-Genome studies
 #
 # Github: https://github.com/nozerorma/caastools/nf-phylly
 #
@@ -21,13 +23,12 @@
 */
 
 /*
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *
- * Unlock the secrets of evolutionary relationships with Phylly! 🌳🔍 This Nextflow pipeline
- * packs a powerful punch, offering a comprehensive suite of phylogenetic comparative tools
- * and analyses. Dive into the world of evolutionary biology like never before and elevate
- * your research to new heights! 🚀🧬 #Phylly #EvolutionaryInsights #NextflowPipeline
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Unlock the secrets of evolutionary relationships with Phylophere! 🌳🔍 This Nextflow pipeline
+* packs a powerful punch, offering a comprehensive suite of phylogenetic comparative tools
+* and analyses. Dive into the world of evolutionary biology like never before and elevate
+* your research to new heights! 🚀🧬 #Phylophere #EvolutionaryInsights #NextflowPipeline
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
 nextflow.enable.dsl = 2

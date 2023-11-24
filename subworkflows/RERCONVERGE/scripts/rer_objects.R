@@ -18,13 +18,6 @@
 # File: rer_objects.R
 #
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Unlock the secrets of evolutionary relationships with Phylophere! 🌳🔍 This Nextflow pipeline
-# packs a powerful punch, offering a comprehensive suite of phylogenetic comparative tools
-# and analyses. Dive into the world of evolutionary biology like never before and elevate
-# your research to new heights! 🚀🧬 #Phylophere #EvolutionaryInsights #NextflowPipeline
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 # Set directories
 ## Pass as arg from nextflow config, should be $baseDir
 
