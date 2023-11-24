@@ -15,7 +15,7 @@
 #
 # Author:         Miguel Ramon (miguel.ramon@upf.edu)
 #
-# File: rer_objects.R
+# File: continuous_rer.R
 #
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,49 +39,38 @@ resultsDir <- file.path(workingDir, "Out")
 library(dplyr)
 library(RERconverge)
 
-# Common functions
-createDir <- function(directory) {
-  if (!file.exists(directory)) {
-    dir.create(directory, recursive = TRUE)
-  }
-}
-
-# Generating RER directory if not exists
-rerDir <- file.path(resultsDir, "7.RERConverge/")
-createDir(rerDir)
-
-# Reading in gene trees with `readTrees`
-### Parameterize
-geneTreesPath <- file.path(dataDir, "Phase_I-In-silico-analysis/Gene_trees/ALL_FEB23_geneTrees.txt")
-
-## Generating masterTree
-geneTrees <- readTrees(geneTreesPath) # Set max.read = 100 to toy-up
-
-## Write our masterTree to path
-treePath <- paste0(rerDir, "RERtrees/")
-createDir(treePath)
-saveRDS(geneTrees, paste0(treePath, "masterTree.rds"))
-
-
-# Load our traits
+# Load traitfile
 neoplasiaPath <- file.path(dataDir, "Phase_I-In-silico-analysis/Neoplasia_species360/neoplasia_vector_RER.RData")
 load(neoplasiaPath) # As neoplasia_vector
 
-# Get residuals from our traitfile
-primRERw <- getAllResiduals(geneTrees,useSpecies=names(neoplasia_vector), 
-    transform = "sqrt", weighted = T, scale = T)
+# Load RER matrix
+treePath <- paste0(rerDir, "RERtrees/masterTree.rds")
+geneTrees <- readRDS(treePath)
 
-# Now we save our RERs
+# Convert the trait vector to paths comparable to the paths in the RER matrix.
+charpaths <- char2Paths(neoplasia_vector, geneTrees)
 
-## Save to path
-rdsPath <- paste0(rerDir, "RERs/")
-createDir(rdsPath)
-saveRDS(primRERw, paste0(rdsPath, "primRERw.rds")) 
+# Load RERs
+rdsPath <- paste0(rerDir, "RERs/primRERw.rds")
+primRERw <- readRDS(rdsPath)
 
-# Pickup all trees
-multirers <- returnRersAsTreesAll(geneTrees,primRERw)
+# Perform continuous RER analysis
+res=correlateWithContinuousPhenotype(primRERw, charpaths, min.sp = 10, 
+    winsorizeRER = 3, winsorizetrait = 3)
 
-## Write our multiRERs
-write.tree(multirers, paste0(rdsPath, "multiRERw.rds"), tree.names=TRUE)
+## Visualize the results
+head(res[order(res$p.adj),])
 
-### DONE ###
+## Check how Pvalues are sorted
+hist(res$P, breaks=100)
+
+## Check how correlation is affected by individual clades
+x=charpaths
+y=primRERw['A1BG',]
+pathnames=namePathsWSpecies(geneTrees$masterTree) 
+names(y)=pathnames
+plot(x,y, cex.axis=1, cex.lab=1, cex.main=1, xlab="Weight Change", 
+    ylab="Evolutionary Rate", main="Gene ADSS Pearson Correlation",
+    pch=19, cex=1, xlim=c(-2,2))
+text(x,y, labels=names(y), pos=4)
+abline(lm(y~x), col='red',lwd=3)

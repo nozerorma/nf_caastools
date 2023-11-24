@@ -28,7 +28,6 @@
 
 # Set directories
 ## Pass as arg from nextflow config, should be $baseDir
-
 setwd("/home/miguel/TFM/Master_projects/NEOPLASY_PRIMATES")
 getwd()
 
@@ -55,12 +54,11 @@ cancer_traits <- cancer_traits %>%
   filter(!is.na(neoplasia_prevalence))
 
 # Select only those columns of interest and build named vector
-neoplasia_vector <- setNames(cancer_traits$neoplasia_prevalence, cancer_traits$species)
+neoplasia_vector <- setNames(as.numeric(cancer_traits$neoplasia_prevalence), cancer_traits$species)
 head(neoplasia_vector)
 
 # Write the generated vector
 ## Parameterize to traits_continuous
-
 neoplasiaPath <- file.path(dataDir, "Phase_I-In-silico-analysis/Neoplasia_species360/neoplasia_vector_RER.RData")
 save(neoplasia_vector, file = neoplasiaPath)
 
