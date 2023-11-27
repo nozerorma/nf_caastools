@@ -40,7 +40,7 @@ process RER_TRAIT {
     path cancer_traitfile
 
     output:
-    file rer_traits
+    file("${ cancer_traitfile }.output")
 
     script:
     // Define extra discovery arguments from params.file
@@ -48,8 +48,9 @@ process RER_TRAIT {
 
     """
         /usr/local/bin/_entrypoint.sh Rscript \\
-        '$baseDir/subworkflows/RERCONVERGE/scripts/build_rer_trait.R' \\
-        ${cancer_traitfile} \\
+        '$baseDir/scripts/build_rer_trait.R' \\
+        ${ cancer_traitfile } \\
+        ${ cancer_traitfile }.output \\
         $args
     """
 }

@@ -1,6 +1,3 @@
-#!/usr/bin/env nextflow
-
-/*
 #
 #
 #  ██████╗ ██╗  ██╗██╗   ██╗██╗      ██████╗ ██████╗ ██╗  ██╗███████╗██████╗ ███████╗
@@ -18,41 +15,31 @@
 #
 # Author:         Miguel Ramon (miguel.ramon@upf.edu)
 #
-# File: rer_obj.R
+# File: rer_matrix.R
 #
-*/
 
-/*
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *  DISCOVERY module: This module is responsible for the discovery process based on input alignments.
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
+# Set up variable to control command line arguments
+args <- commandArgs(TRUE)
 
+# Load libraries
+library(dplyr)
+library(RERconverge)
 
-process RER_OBJ {
-    tag "$gene_trees_file"
+# Load our traits
+neoplasiaPath <- args[1]
+load(neoplasiaPath) # As neoplasia_vector
 
-    // Uncomment the following lines to assign workload priority.
-    // label 'big_mem'
+# Load our trees
+treePath <- args[2]
+geneTrees <- readRDS(treePath)
 
+# Get residuals from our traitfile
+primRERw <- getAllResiduals(geneTrees,useSpecies=names(neoplasia_vector), 
+    transform = "sqrt", weighted = T, scale = T)
 
-    input:
-    path gene_trees_file
-    path trait_file
+# Now we save our RERs
 
-    output:
-    file rer_matrix
-    file rer_output
-    file multi_rers
+## Save to path
+saveRDS(primRERw, args[3])
 
-    script:
-    // Define extra discovery arguments from params.file
-    def args = task.ext.args ?: ''
-
-    """
-        /usr/local/bin/_entrypoint.sh Rscript \\
-        '$baseDir/subworkflows/RERCONVERGE/scripts/rer_objects.R' \\
-        ${gene_trees_file} ${trait_file} \\
-        $args
-    """
-}
+### DONE ###

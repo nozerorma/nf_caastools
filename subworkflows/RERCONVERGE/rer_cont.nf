@@ -28,20 +28,24 @@
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 process RER_CONT {
-    tag "$rer_matrix_file"
+    tag "$rer_matrix"
 
     // Uncomment the following lines to assign workload priority.
     // label 'big_mem'
 
 
     input:
-    file trait_file
-    file rer_matrix_file
-    file rer_results_file
+    path trait_file
+    path rer_master_tree
+    path rer_matrix
 
 
     output:
-    file rer_continuous_file
+    file(${ rer_matrix }.continuous.output )
+    file(${ rer_matrix }.pval.output )
+    file(${ rer_matrix }.lfc.output )
+
+
 
     script:
     // Define extra discovery arguments from params.file
@@ -49,8 +53,13 @@ process RER_CONT {
 
     """
         /usr/local/bin/_entrypoint.sh Rscript \\
-        '$baseDir/subworkflows/RERCONVERGE/scripts/continuous_rer.R' \\
-        ${trait_file} ${rer_matrix_file} ${rer_results_file} \\
+        '$baseDir/scripts/continuous_rer.R' \\
+        ${ trait_file } \\
+        ${ rer_master_tree } \\
+        ${ rer_matrix } \\
+        ${ rer_matrix }.output \\
+        ${ rer_matrix }.pval.output \\
+        ${ rer_matrix }.lfc.output \\
         $args
     """
 }

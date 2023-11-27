@@ -35,6 +35,9 @@ process RESAMPLE {
     //label 'big_mem'
 
 
+    input:
+    path nw_tree
+
     output:
     file("${nw_tree}.resampled.output")
     
@@ -57,8 +60,8 @@ process RESAMPLE {
 
     """
     /usr/local/bin/_entrypoint.sh ct resample \\
-        -p ${params.nw_tree} \\
-        -o ${params.nw_tree}.resampled.output \\
+        -p ${nw_tree} \\
+        -o ${nw_tree}.resampled.output \\
         ${strategyCommand} \\
         $args
     """

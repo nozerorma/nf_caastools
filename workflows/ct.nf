@@ -35,6 +35,9 @@ align_tuple = Channel
                 .filter { it.isFile() } // Filter out directories
                 .map { file -> tuple(file.baseName, file) }
 
+// Define the tree file channel
+nw_tree = file(params.tree)
+
 // Import local modules/subworkflows
 include { DISCOVERY } from "${baseDir}/subworkflows/CT/ct_discovery"
 include { RESAMPLE } from "${baseDir}/subworkflows/CT/ct_resample"
@@ -52,14 +55,10 @@ workflow CT {
             discovery_out = DISCOVERY(align_tuple)
         }
         if (toolsToRun.contains('resample')) {
-            resample_out = RESAMPLE()
+            resample_out = RESAMPLE(nw_tree)
         }
         if (toolsToRun.contains('bootstrap')) {
             boostrap_out = BOOTSTRAP(align_tuple, resample_out)
         }
     }    
-}
-
-workflow.onComplete {
-    println ( workflow.success ? "\nYay CT!\n" : "Oops .. something went wrong" )
 }

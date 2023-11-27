@@ -21,22 +21,6 @@
 # Set up variable to control command line arguments
 args <- commandArgs(TRUE)
 
-# Common functions
-createDir <- function(directory) {
-    if (!file.exists(directory)) {
-        dir.create(directory, recursive = TRUE)
-    }
-}
-
-# Set directories
-## Pass as arg from nextflow config, should be $baseDir
-
-workingDir <- getwd()
-dataDir <- file.path(workingDir, "Data")
-createDir(dataDir)
-resultsDir <- file.path(workingDir, "Out")
-createDir(resultsDir)
-
 # Load libraries
 library(dplyr)
 library(RERconverge)
@@ -63,6 +47,7 @@ head(neoplasia_vector)
 # Write the generated vector
 ## Parameterize to traits_continuous
 neoplasiaPath <- args[2]
+print(neoplasiaPath)
 save(neoplasia_vector, file = neoplasiaPath)
 
 ### DONE ###

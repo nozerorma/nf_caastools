@@ -21,54 +21,37 @@
 # Set up variable to control command line arguments
 args <- commandArgs(TRUE)
 
-# Common functions
-createDir <- function(directory) {
-    if (!file.exists(directory)) {
-        dir.create(directory, recursive = TRUE)
-    }
-}
-
-# Set directories
-## Pass as arg from nextflow config, should be $baseDir
-
-workingDir <- getwd()
-dataDir <- file.path(workingDir, "Data")
-createDir(dataDir)
-resultsDir <- file.path(workingDir, "Out")
-createDir(resultsDir)
-
-# Generating RER directory if not exists
-rerDir <- file.path(resultsDir, "RERConverge/")
-createDir(rerDir)
-
 # Load libraries
 library(dplyr)
 library(RERconverge)
 
 # Load traitfile
-neoplasiaPath <- file.path(dataDir, args[1])
+neoplasiaPath <- args[1]
 load(neoplasiaPath) # As neoplasia_vector
 
 # Load RER matrix
-treePath <- paste0(rerDir, args[2])
+treePath <- args[2]
 geneTrees <- readRDS(treePath)
 
 # Convert the trait vector to paths comparable to the paths in the RER matrix.
 charpaths <- char2Paths(neoplasia_vector, geneTrees)
 
 # Load RERs
-rdsPath <- paste0(rerDir, args[4])
+rdsPath <- args[3]
 primRERw <- readRDS(rdsPath)
 
 # Perform continuous RER analysis
-res=correlateWithContinuousPhenotype(primRERw, charpaths, min.sp = 10, 
+res <- correlateWithContinuousPhenotype(primRERw, charpaths, min.sp = 10, 
     winsorizeRER = 3, winsorizetrait = 3)
+
+saveRDS(res, args[4])
+
 
 ## Visualize the results
 head(res[order(res$p.adj),])
 
 ## Check how P-values are sorted
-pdf("pvalue_sortage_rer.pdf")
+pdf(args[5])
 p1 <- hist(res$P, breaks=100, main = "P-value distribution in RERs")
 dev.off()
 
@@ -78,7 +61,7 @@ x <- charpaths
 y <- primRERw['A1BG',] # example
 pathNames <- namePathsWSpecies(geneTrees$masterTree) 
 
-pdf("Pearson_correlation_example.pdf")
+pdf(args[6])
 names(y) <- pathNames
 plot(x,y, cex.axis=1, cex.lab=1, cex.main=1, xlab="Weight Change", 
     ylab="Evolutionary Rate", main="Gene A1BG Pearson Correlation (Example)",
