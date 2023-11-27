@@ -1,6 +1,3 @@
-#!/usr/bin/env nextflow
-
-/*
 #
 #
 #  ██████╗ ██╗  ██╗██╗   ██╗██╗      ██████╗ ██████╗ ██╗  ██╗███████╗██████╗ ███████╗
@@ -18,48 +15,58 @@
 #
 # Author:         Miguel Ramon (miguel.ramon@upf.edu)
 #
-# File: rer_cont.R
+# File: continuous_rer.R
 #
-*/
 
-/*
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *  DISCOVERY module: This module is responsible for the discovery process based on input alignments.
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-process RER_CONT {
-    tag "$rer_matrix"
+# Set up variable to control command line arguments
+args <- commandArgs(TRUE)
 
-    // Uncomment the following lines to assign workload priority.
-    label 'process_rer'
+# Load libraries
+library(dplyr)
+library(RERconverge)
+
+# Load traitfile
+neoplasiaPath <- args[1]
+load(neoplasiaPath) # As neoplasia_vector
+
+# Load RER matrix
+treePath <- args[2]
+geneTrees <- readRDS(treePath)
+
+# Convert the trait vector to paths comparable to the paths in the RER matrix.
+charpaths <- char2Paths(neoplasia_vector, geneTrees)
+
+# Load RERs
+rdsPath <- args[3]
+primRERw <- readRDS(rdsPath)
+
+# Perform continuous RER analysis
+res <- correlateWithContinuousPhenotype(primRERw, charpaths, min.sp = 10, 
+    winsorizeRER = 3, winsorizetrait = 3)
+
+saveRDS(res, args[4])
 
 
-    input:
-    path trait_file
-    path rer_master_tree
-    path rer_matrix
+## Visualize the results
+head(res[order(res$p.adj),])
 
+## Check how P-values are sorted
+pdf(args[5])
+p1 <- hist(res$P, breaks=100, main = "P-value distribution in RERs")
+dev.off()
 
-    output:
-    file(${ rer_matrix }.continuous.output )
-    file(${ rer_matrix }.pval.output )
-    file(${ rer_matrix }.lfc.output )
+## Check how correlation is affected by individual clades
+### Probably this should be performed in a streamlined way in a different script
+x <- charpaths
+y <- primRERw['A1BG',] # example
+pathNames <- namePathsWSpecies(geneTrees$masterTree) 
 
+pdf(args[6])
+names(y) <- pathNames
+plot(x,y, cex.axis=1, cex.lab=1, cex.main=1, xlab="Weight Change", 
+    ylab="Evolutionary Rate", main="Gene A1BG Pearson Correlation (Example)",
+    pch=19, cex=1, xlim=c(-2,2))
 
-
-    script:
-    // Define extra discovery arguments from params.file
-    def args = task.ext.args ?: ''
-
-    """
-        /usr/local/bin/_entrypoint.sh Rscript \\
-        '$baseDir/scripts/continuous_rer.R' \\
-        ${ trait_file } \\
-        ${ rer_master_tree } \\
-        ${ rer_matrix } \\
-        ${ rer_matrix }.output \\
-        ${ rer_matrix }.pval.output \\
-        ${ rer_matrix }.lfc.output \\
-        $args
-    """
-}
+text(x, y, labels = names(y), pos=4)
+abline(lm(y~x), col='red',lwd=3)
+dev.off()

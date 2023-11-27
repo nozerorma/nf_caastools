@@ -33,7 +33,7 @@ process RER_TREES {
     tag "$gene_trees_file"
 
     // Uncomment the following lines to assign workload priority.
-    label 'process_medium'
+    label 'process_rer'
 
 
     input:

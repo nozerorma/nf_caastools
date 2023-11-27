@@ -1,6 +1,3 @@
-#!/usr/bin/env nextflow
-
-/*
 #
 #
 #  ██████╗ ██╗  ██╗██╗   ██╗██╗      ██████╗ ██████╗ ██╗  ██╗███████╗██████╗ ███████╗
@@ -18,48 +15,39 @@
 #
 # Author:         Miguel Ramon (miguel.ramon@upf.edu)
 #
-# File: rer_cont.R
+# File: build_rer_trait.R
 #
-*/
 
-/*
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *  DISCOVERY module: This module is responsible for the discovery process based on input alignments.
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-process RER_CONT {
-    tag "$rer_matrix"
+# Set up variable to control command line arguments
+args <- commandArgs(TRUE)
 
-    // Uncomment the following lines to assign workload priority.
-    label 'process_rer'
+# Load libraries
+library(dplyr)
+library(RERconverge)
 
+# Load traitfile
+## Pass as arg from nextflow config, should be
+cancer_traits <- read.csv(args[1])
 
-    input:
-    path trait_file
-    path rer_master_tree
-    path rer_matrix
+## Remove whitespaces
+cancer_traits[] <- lapply(cancer_traits, function(col) trimws(col))
 
+## Binarize names
+cancer_traits$species <- gsub(" ", "_", cancer_traits$species)
 
-    output:
-    file(${ rer_matrix }.continuous.output )
-    file(${ rer_matrix }.pval.output )
-    file(${ rer_matrix }.lfc.output )
+## Reorder and filter species
+cancer_traits <- cancer_traits %>%
+  select(species,neoplasia_prevalence) %>%
+  filter(!is.na(neoplasia_prevalence))
 
+# Select only those columns of interest and build named vector
+neoplasia_vector <- setNames(as.numeric(cancer_traits$neoplasia_prevalence), cancer_traits$species)
+head(neoplasia_vector)
 
+# Write the generated vector
+## Parameterize to traits_continuous
+neoplasiaPath <- args[2]
+print(neoplasiaPath)
+save(neoplasia_vector, file = neoplasiaPath)
 
-    script:
-    // Define extra discovery arguments from params.file
-    def args = task.ext.args ?: ''
-
-    """
-        /usr/local/bin/_entrypoint.sh Rscript \\
-        '$baseDir/scripts/continuous_rer.R' \\
-        ${ trait_file } \\
-        ${ rer_master_tree } \\
-        ${ rer_matrix } \\
-        ${ rer_matrix }.output \\
-        ${ rer_matrix }.pval.output \\
-        ${ rer_matrix }.lfc.output \\
-        $args
-    """
-}
+### DONE ###
