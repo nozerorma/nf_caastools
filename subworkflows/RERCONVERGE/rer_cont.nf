@@ -31,7 +31,7 @@ process RER_CONT {
     tag "$rer_matrix"
 
     // Uncomment the following lines to assign workload priority.
-    label 'process_rer' // have to tell it that only if using cluster!!!!!!!
+    //label 'process_rer' // have to tell it that only if using cluster!!!!!!!
 
 
     input:
@@ -41,9 +41,9 @@ process RER_CONT {
 
 
     output:
-    file(${ params.traitfile }.continuous.output )
-    file(${ params.traitfile }.pval.output )
-    file(${ params.traitfile }.lfc.output )
+    file("${ params.traitname }.continuous.output")
+    file("${ params.traitname }.pval.output")
+    file("${ params.traitname }.lfc.output")
 
 
 
@@ -57,9 +57,9 @@ process RER_CONT {
         ${ trait_file } \\
         ${ rer_master_tree } \\
         ${ rer_matrix } \\
-        ${ params.traitfile }.continuous.output \\
-        ${ params.traitfile }.pval.output \\
-        ${ params.traitfile }.lfc.output \\
+        ${ params.traitname }.continuous.output \\
+        ${ params.traitname }.pval.output \\
+        ${ params.traitname }.lfc.output \\
         $args
     """
 }

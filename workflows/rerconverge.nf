@@ -50,16 +50,26 @@ include { RER_CONT } from "${baseDir}/subworkflows/RERCONVERGE/rer_cont"
 // def toolsToRun = params.ct_tool.split(',') NOT NEEDED UNTIL OTHER STUFF FROM RERCONVERGE IS INCLUDED
 
 workflow RER_MAIN {
+
+    // Define trait_out, trees_out, and matrix_out
+    trait_out = null
+    trees_out = null
+    matrix_out = null
+
     if (params.rer_tool) {
         def toolsToRun = params.rer_tool.split(',')
-        if (toolsToRun.contains('build_trait')) {
-            trait_out = RER_TRAIT(my_traitfile)
-            trees_out = RER_TREES(gene_trees_file, trait_out)
-            matrix_out = RER_MATRIX(trait_out, trees_out)
-        }
-        if (toolsToRun.contains('continuous')) {
-            continuous_out = RER_CONT(trait_out, trees_out, matrix_out)
-        }
+    // Conditionally run the 'build_trait' tool
+    if (params.rer_tool && params.rer_tool.contains('build_trait')) {
+        trait_out = RER_TRAIT(my_traitfile)
+        trees_out = RER_TREES(gene_trees_file, trait_out)
+        matrix_out = RER_MATRIX(trait_out, trees_out)
+    }
+
+    // Conditionally run the 'continuous' tool
+    if (params.rer_tool && params.rer_tool.contains('continuous')) {
+        // Use outputs from the 'build_trait' tool if available, otherwise use defaults from nextflow.config
+        continuous_out = RER_CONT(trait_out ?: params.trait_out, trees_out ?: params.trees_out, matrix_out ?: params.matrix_out)
+    }
     /*     if (toolsToRun.contains('enrichment')) {
             enrichment_out = RER_ENRICH()
         } */
