@@ -1,3 +1,6 @@
+#!/usr/bin/env nextflow
+
+/*
 #
 #
 #  ██████╗ ██╗  ██╗██╗   ██╗██╗      ██████╗ ██████╗ ██╗  ██╗███████╗██████╗ ███████╗
@@ -15,54 +18,38 @@
 #
 # Author:         Miguel Ramon (miguel.ramon@upf.edu)
 #
-# File: build_rer_trait.R
+# File: rer_trait.nf
 #
+*/
 
-# Set up variable to control command line arguments
-args <- commandArgs(TRUE)
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  RER_TRAIT module: This module is responsible for the discovery process based on input alignments.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 
-# Common functions
-createDir <- function(directory) {
-    if (!file.exists(directory)) {
-        dir.create(directory, recursive = TRUE)
-    }
+
+process RER_TRAIT {
+    tag "$cancer_traitfile"
+
+    // Uncomment the following lines to assign workload priority.
+    // label 'big_mem'
+
+
+    input:
+    path cancer_traitfile
+
+    output:
+    file rer_traits
+
+    script:
+    // Define extra discovery arguments from params.file
+    def args = task.ext.args ?: ''
+
+    """
+        /usr/local/bin/_entrypoint.sh Rscript \\
+        '$baseDir/subworkflows/RERCONVERGE/scripts/build_rer_trait.R' \\
+        ${cancer_traitfile} \\
+        $args
+    """
 }
-
-# Set directories
-## Pass as arg from nextflow config, should be $baseDir
-
-workingDir <- getwd()
-dataDir <- file.path(workingDir, "Data")
-createDir(dataDir)
-resultsDir <- file.path(workingDir, "Out")
-createDir(resultsDir)
-
-# Load libraries
-library(dplyr)
-library(RERconverge)
-
-# Load traitfile
-## Pass as arg from nextflow config, should be
-cancer_traits <- read.csv(args[1])
-
-## Remove whitespaces
-cancer_traits[] <- lapply(cancer_traits, function(col) trimws(col))
-
-## Binarize names
-cancer_traits$species <- gsub(" ", "_", cancer_traits$species)
-
-## Reorder and filter species
-cancer_traits <- cancer_traits %>%
-  select(species,neoplasia_prevalence) %>%
-  filter(!is.na(neoplasia_prevalence))
-
-# Select only those columns of interest and build named vector
-neoplasia_vector <- setNames(as.numeric(cancer_traits$neoplasia_prevalence), cancer_traits$species)
-head(neoplasia_vector)
-
-# Write the generated vector
-## Parameterize to traits_continuous
-neoplasiaPath <- args[2]
-save(neoplasia_vector, file = neoplasiaPath)
-
-### DONE ###

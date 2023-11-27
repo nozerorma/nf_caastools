@@ -38,34 +38,31 @@ version = "0.0.1"
 // Display input parameters
 log.info """
 
-CAASTOOL - N F PIPELINE  ~  version ${version}
+PHYLOPHERE - NF PIPELINE  ~  version ${version}
 =============================================
 
- A Convergent Amino Acid Substitution identification
- and analysis toolbox
+PHYLOPHERE: A Nextflow pipeline including a complete set
+of phylogenetic comparative tools and analyses for Phenome-Genome studies
 
- Author:         Fabio Barteri (fabio.barteri@upf.edu)
- Contributors:   Alejandro Valenzuela (alejandro.valenzuela@upf.edu),
-                 Xavier Farré (xfarrer@igtp.cat),
-                 David de Juan (david.juan@upf.edu),
-                 Miguel Ramon (miguel.ramon@upf.edu) - Nextflow Protocol Elaboration
+Author:         Miguel Ramon (miguel.ramon@upf.edu)
+
 
 """
 
 /*
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *  NAMED WORKFLOW FOR PIPELINE: This section includes the main CT workflow from the ct.nf file.
+ *  NAMED WORKFLOW FOR PIPELINE: This section includes the main CT, ORA and RERConverge workflows.
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
 include {HELP} from './workflows/help.nf'
 include {CT} from './workflows/ct.nf'
-include {RERCONVERGE} from './workflows/rerconverge.nf'
-include {ORA} from './workflows/ora.nf'
+include {RER_MAIN} from './workflows/rerconverge.nf'
+//include {ORA} from './workflows/ora.nf'
 
 /*
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *  RUN CAASTOOLS ANALYSIS: This section initiates the main CT workflow.
+ *  RUN PHYLOPHERE ANALYSIS: This section initiates the main Phylophere workflow.
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
@@ -76,7 +73,7 @@ workflow {
         HELP ()
     } else if (params.ct_tool){
         CT ()
-    } else if (params.rerconverge) {
+    } else if (params.rer_tool) {
         RER_MAIN()
     } /* else if (params.ora) {
         ORA()

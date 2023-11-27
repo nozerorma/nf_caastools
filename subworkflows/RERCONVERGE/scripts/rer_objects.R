@@ -18,34 +18,38 @@
 # File: rer_objects.R
 #
 
+# Set up variable to control command line arguments
+args <- commandArgs(TRUE)
+
+# Common functions
+createDir <- function(directory) {
+    if (!file.exists(directory)) {
+        dir.create(directory, recursive = TRUE)
+    }
+}
+
 # Set directories
 ## Pass as arg from nextflow config, should be $baseDir
 
-setwd("/home/miguel/TFM/Master_projects/NEOPLASY_PRIMATES")
+setwd(dir(args[1]))
 getwd()
 
 workingDir <- getwd()
 dataDir <- file.path(workingDir, "Data")
+createDir(dataDir)
 resultsDir <- file.path(workingDir, "Out")
+createDir(resultsDir)
 
 # Load libraries
 library(dplyr)
 library(RERconverge)
 
-# Common functions
-createDir <- function(directory) {
-  if (!file.exists(directory)) {
-    dir.create(directory, recursive = TRUE)
-  }
-}
-
 # Generating RER directory if not exists
-rerDir <- file.path(resultsDir, "7.RERConverge/")
+rerDir <- file.path(resultsDir, "RERConverge/")
 createDir(rerDir)
 
 # Reading in gene trees with `readTrees`
-### Parameterize
-geneTreesPath <- file.path(dataDir, "Phase_I-In-silico-analysis/Gene_trees/ALL_FEB23_geneTrees.txt")
+geneTreesPath <- file.path(dataDir, args[1])
 
 ## Generating masterTree
 geneTrees <- readTrees(geneTreesPath) # Set max.read = 100 to toy-up
@@ -53,11 +57,11 @@ geneTrees <- readTrees(geneTreesPath) # Set max.read = 100 to toy-up
 ## Write our masterTree to path
 treePath <- paste0(rerDir, "RERtrees/")
 createDir(treePath)
-saveRDS(geneTrees, paste0(treePath, "masterTree.rds"))
+saveRDS(geneTrees, paste0(treePath, "rerMatrix.rds"))
 
 
 # Load our traits
-neoplasiaPath <- file.path(dataDir, "Phase_I-In-silico-analysis/Neoplasia_species360/neoplasia_vector_RER.RData")
+neoplasiaPath <- file.path(dataDir, args[2])
 load(neoplasiaPath) # As neoplasia_vector
 
 # Get residuals from our traitfile

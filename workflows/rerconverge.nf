@@ -34,26 +34,39 @@
 
 
 // Define the gene tree channel tree_tuple
-tree_tuple = Channel
-                .fromPath("${params.gene_trees}/**/*") // As of now, must be in second level
-                .filter { it.isFile() } // Filter out directories
-                .map { file -> tuple(file.baseName, file) }
+gene_trees_file = file( params.gene_trees )
 
-// Define the tree file channel
-trait_file = file(params.rer_traits)
+// Define the trait file channel
+cancer_traitfile = file( params.cancer_traits )
+trait_file = file( params.rer_traits )
+rer_matrix_file = file( params.rer_matrix )
+rer_results_file = file( params.rer_rds )
 
 // Import local modules/subworkflows
-include { RERCONVERGE } from "${baseDir}/subworkflows/RERCONVERGE/rerconverge" addParams(TREE_TUPLE: tree_tuple)
+include { RER_TRAIT } from "${baseDir}/subworkflows/RERCONVERGE/rer_trait"
+include { RER_OBJ } from "${baseDir}/subworkflows/RERCONVERGE/rer_obj" 
+include { RER_CONT } from "${baseDir}/subworkflows/RERCONVERGE/rer_cont"
+//include { RER_ENRICH } from "${baseDir}/subworkflows/RERCONVERGE/rer_enrich" addParams(TREE_TUPLE: tree_tuple)
 
 // Main workflow
 // def toolsToRun = params.ct_tool.split(',') NOT NEEDED UNTIL OTHER STUFF FROM RERCONVERGE IS INCLUDED
 
 workflow RER_MAIN {
-
-    rer_out = RERCONVERGE(tree_tuple)
-
+    if (params.rer_tool) {
+        def toolsToRun = params.rer_tool.split(',')
+        if (toolsToRun.contains('build_trait')) {
+            RER_TRAIT(cancer_traitfile)
+            RER_OBJ(gene_trees_file, RER_TRAIT.out)
+        }
+        if (toolsToRun.contains('continuous')) {
+            continuous_out = RER_CONT(trait_file, rer_matrix_file, rer_results_file)
+        }
+    /*     if (toolsToRun.contains('enrichment')) {
+            enrichment_out = RER_ENRICH()
+        } */
+    }
 }
 
 workflow.onComplete {
-    println ( workflow.success ? "\RERConverge analysis was completed successfully!\n" : "Oops .. something went wrong" )
+    println ( workflow.success ? "\nYay RER!\n" : "Oops .. something went wrong" )
 }

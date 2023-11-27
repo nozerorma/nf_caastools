@@ -18,7 +18,7 @@
 #
 # Author:         Miguel Ramon (miguel.ramon@upf.edu)
 #
-# File: rer_analysis.R
+# File: rer_obj.R
 #
 */
 
@@ -29,29 +29,30 @@
  */
 
 
-process DISCOVERY {
-    tag "$alignmentID"
+process RER_OBJ {
+    tag "$gene_trees_file"
 
     // Uncomment the following lines to assign workload priority.
     // label 'big_mem'
 
 
     input:
-    tuple val(alignmentID), file(alignmentFile)
+    path gene_trees_file
+    path trait_file
 
     output:
-    tuple val(alignmentID), file("${alignmentID}.output"), optional: true
+    file rer_matrix
+    file rer_output
+    file multi_rers
 
     script:
     // Define extra discovery arguments from params.file
     def args = task.ext.args ?: ''
 
     """
-        /usr/local/bin/_entrypoint.sh ct discovery \\
-        -a ${alignmentFile} \\
-        -t ${params.traitfile} \\
-        -o ${alignmentID}.output \\
-        --fmt ${params.ali_format} \\
-        ${args.replaceAll('\n', ' ')}
+        /usr/local/bin/_entrypoint.sh Rscript \\
+        '$baseDir/subworkflows/RERCONVERGE/scripts/rer_objects.R' \\
+        ${gene_trees_file} ${trait_file} \\
+        $args
     """
 }

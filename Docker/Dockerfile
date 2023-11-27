@@ -74,6 +74,7 @@ ADD ct .
 # Make ct and permulations.r executable and 
 RUN chmod +x ./ct
 RUN chmod +x ./permulations.r
+RUN chmod +x ./scripts/*
 
 # Add ct and conda binary to $PATH
 ENV PATH=/ct:$PATH
