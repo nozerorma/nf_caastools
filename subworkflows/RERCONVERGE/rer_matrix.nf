@@ -33,7 +33,7 @@ process RER_MATRIX {
     tag "$gene_trees_file"
 
     // Uncomment the following lines to assign workload priority.
-    // label 'big_mem'
+    label 'process_medium'
 
 
     input:

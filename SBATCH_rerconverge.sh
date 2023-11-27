@@ -1,6 +1,5 @@
-#!/usr/bin/env nextflow
+#!/bin/bash
 
-/*
 #
 #
 #  ██████╗ ██╗  ██╗██╗   ██╗██╗      ██████╗ ██████╗ ██╗  ██╗███████╗██████╗ ███████╗
@@ -18,48 +17,26 @@
 #
 # Author:         Miguel Ramon (miguel.ramon@upf.edu)
 #
-# File: rer_cont.R
+# File: SBATCH_discovery.sh
 #
-*/
 
-/*
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *  DISCOVERY module: This module is responsible for the discovery process based on input alignments.
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-process RER_CONT {
-    tag "$rer_matrix"
+#SBATCH --job-name=phylophere-rerc
+#SBATCH -p haswell
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=20
+#SBATCH --mem=16G
+#SBATCH -e slurm-%j.err
+#SBATCH -o slurm-%j.out
+#SBATCH --time=8:00:00
 
-    // Uncomment the following lines to assign workload priority.
-    label 'process_medium'
+# send mail if needed
+#SBATCH --mail-type=START,END,FAIL
+#SBATCH --mail-user=miguel.ramon@upf.edu
 
+#Define modules
+module load Nextflow
 
-    input:
-    path trait_file
-    path rer_master_tree
-    path rer_matrix
+#Run rerconverge instance of Phylophere
+nextflow run main.nf -with-singularity -with-tower -profile singularity --rer_tool build_trait,continuous
 
-
-    output:
-    file(${ rer_matrix }.continuous.output )
-    file(${ rer_matrix }.pval.output )
-    file(${ rer_matrix }.lfc.output )
-
-
-
-    script:
-    // Define extra discovery arguments from params.file
-    def args = task.ext.args ?: ''
-
-    """
-        /usr/local/bin/_entrypoint.sh Rscript \\
-        '$baseDir/scripts/continuous_rer.R' \\
-        ${ trait_file } \\
-        ${ rer_master_tree } \\
-        ${ rer_matrix } \\
-        ${ rer_matrix }.output \\
-        ${ rer_matrix }.pval.output \\
-        ${ rer_matrix }.lfc.output \\
-        $args
-    """
-}
