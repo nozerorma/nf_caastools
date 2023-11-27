@@ -30,17 +30,17 @@
 
 
 process RER_TRAIT {
-    tag "$cancer_traitfile"
+    tag "$my_traitfile"
 
     // Uncomment the following lines to assign workload priority.
     // label 'big_mem'
 
 
     input:
-    path cancer_traitfile
+    path my_traitfile
 
     output:
-    file("${ cancer_traitfile }.output")
+    file("${ my_traitfile }.output")
 
     script:
     // Define extra discovery arguments from params.file
@@ -49,8 +49,8 @@ process RER_TRAIT {
     """
         /usr/local/bin/_entrypoint.sh Rscript \\
         '$baseDir/scripts/build_rer_trait.R' \\
-        ${ cancer_traitfile } \\
-        ${ cancer_traitfile }.output \\
+        ${ my_traitfile } \\
+        ${ my_traitfile }.output \\
         $args
     """
 }

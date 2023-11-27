@@ -37,7 +37,7 @@
 gene_trees_file = file( params.gene_trees )
 
 // Define the trait file channel
-cancer_traitfile = file( params.cancer_traits )
+my_traitfile = file( params.my_traits )
 
 // Import local modules/subworkflows
 include { RER_TRAIT } from "${baseDir}/subworkflows/RERCONVERGE/rer_trait"
@@ -53,7 +53,7 @@ workflow RER_MAIN {
     if (params.rer_tool) {
         def toolsToRun = params.rer_tool.split(',')
         if (toolsToRun.contains('build_trait')) {
-            trait_out = RER_TRAIT(cancer_traitfile)
+            trait_out = RER_TRAIT(my_traitfile)
             trees_out = RER_TREES(gene_trees_file, trait_out)
             matrix_out = RER_MATRIX(trait_out, trees_out)
         }
