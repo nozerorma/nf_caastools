@@ -33,7 +33,7 @@ process RER_TREES {
     tag "$gene_trees_file"
 
     // Uncomment the following lines to assign workload priority.
-    label 'process_rer'
+    label 'process_rer' // have to tell it that only if using cluster!!!!!!!
 
 
     input:
@@ -41,19 +41,19 @@ process RER_TREES {
     path cancer_trait
 
     output:
-    file("${ gene_trees_file }.output")
+    file("${gene_trees_file}.masterTree.output")
 
 
     script:
     // Define extra discovery arguments from params.file
     def args = task.ext.args ?: ''
+    def outputName = "${gene_trees_file}.masterTree.output"
 
     """
         /usr/local/bin/_entrypoint.sh Rscript \\
-        '$baseDir/scripts/rer_master_tree.R' \\
+        '$baseDir/subworkflows/RERCONVERGE/local/rer_master_tree.R' \\
         ${ gene_trees_file } \\
-        ${ gene_trees_file }.output \\
-        
+        ${ outputName } \\
         $args
     """
 }

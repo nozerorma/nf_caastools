@@ -40,17 +40,19 @@ process RER_TRAIT {
     path my_traitfile
 
     output:
-    file("${ my_traitfile }.output")
+    file("${params.traitname}.polished.output")
 
     script:
     // Define extra discovery arguments from params.file
-    def args = task.ext.args ?: ''
+    // def args = task.ext.args ?: ''
+    def outputName = "${params.traitname}.polished.output"
 
     """
         /usr/local/bin/_entrypoint.sh Rscript \\
-        '$baseDir/scripts/build_rer_trait.R' \\
+        '$baseDir/subworkflows/RERCONVERGE/local/build_rer_trait.R' \\
         ${ my_traitfile } \\
-        ${ my_traitfile }.output \\
+        ${ params.traitname } \\
+        ${ outputName } \\
         $args
     """
 }

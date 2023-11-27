@@ -48,7 +48,7 @@ process RER_TRAIT {
 
     """
         /usr/local/bin/_entrypoint.sh Rscript \\
-        '$baseDir/subworkflows/RERCONVERGE/scripts/build_rer_trait.R \\
+        '$baseDir/subworkflows/RERCONVERGE/local/build_rer_trait.R \\
         ${params.cancer_traits} \\
         ${args.replaceAll('\n', ' ')}
     """

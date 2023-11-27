@@ -1,20 +1,19 @@
-#                          _              _
-#                         | |            | |
-#      ___ __ _  __ _ ___| |_ ___   ___ | |___
-#    / __/ _` |/ _` / __| __/ _ \ / _ \| / __|
-#   | (_| (_| | (_| \__ \ || (_) | (_) | \__ \
-#   \___\__,_|\__,_|___/\__\___/ \___/|_|___/
 #
-# A Convergent Amino Acid Substitution identification 
-# and analysis toolbox - Nextflow edition
 #
-# Github: https://github.com/nozerorma/caastools/blob/nextflow-rize
+#  ██████╗ ██╗  ██╗██╗   ██╗██╗      ██████╗ ██████╗ ██╗  ██╗███████╗██████╗ ███████╗
+#  ██╔══██╗██║  ██║╚██╗ ██╔╝██║     ██╔═══██╗██╔══██╗██║  ██║██╔════╝██╔══██╗██╔════╝
+#  ██████╔╝███████║ ╚████╔╝ ██║     ██║   ██║██████╔╝███████║█████╗  ██████╔╝█████╗  
+#  ██╔═══╝ ██╔══██║  ╚██╔╝  ██║     ██║   ██║██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗██╔══╝  
+#  ██║     ██║  ██║   ██║   ███████╗╚██████╔╝██║     ██║  ██║███████╗██║  ██║███████╗
+#  ╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
+#                                                                                    
+#                                      
+# PHYLOPHERE: A Nextflow pipeline including a complete set
+# of phylogenetic comparative tools and analyses for Phenome-Genome studies
 #
-# Author:         Fabio Barteri (fabio.barteri@upf.edu)
-# Contributors:   Alejandro Valenzuela (alejandro.valenzuela@upf.edu),
-#                 Xavier Farré (xfarrer@igtp.cat),
-#                 David de Juan (david.juan@upf.edu),
-#                 Miguel Ramon (miguel.ramon@upf.edu) - Nextflow Protocol Elaboration
+# Github: https://github.com/nozerorma/caastools/nf-phylophere
+#
+# Author:         Miguel Ramon (miguel.ramon@upf.edu)
 #
 # File: Dockerfile
 #
@@ -52,7 +51,7 @@ RUN micromamba install -y -n base -f /tmp/env.yml && \
 # Add RERconverge package manually to the R library of the newly created environment
 ## I could not find the culprit to this. Both BioConda and BioContainers RERConverge images fail to
 ## properly add the package to the library. RERConverge was still specified in the conda env.yml
-## as I'm pretty confident it does install its requirements, as the image stayed pretty the same
+## I'm pretty confident it does install its requirements, as the image stayed pretty the same
 ## size-wise. This should be furtherly inspected though.
 
 COPY RERconverge /opt/conda/lib/R/library/RERconverge

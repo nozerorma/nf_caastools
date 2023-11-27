@@ -41,19 +41,20 @@ process RER_MATRIX {
     path trait_file
 
     output:
-    file("${ gene_trees_file }.output")
+    file("${params.traitname}.RERmatrix.output")
 
 
     script:
     // Define extra discovery arguments from params.file
     def args = task.ext.args ?: ''
+    def outputName = "${params.traitname}.RERmatrix.output"
 
     """
         /usr/local/bin/_entrypoint.sh Rscript \\
-        '$baseDir/scripts/rer_matrix.R' \\
+        '$baseDir/subworkflows/RERCONVERGE/local/rer_matrix.R' \\
         ${ gene_trees_file } \\
         ${ trait_file } \\
-        ${ gene_trees_file }.output
+        ${ outputName }
         
         $args
     """
