@@ -24,7 +24,7 @@
 #SBATCH -p haswell
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=20
+#SBATCH --cpus-per-task=10
 #SBATCH --mem=16G
 #SBATCH -e slurm-%j.err
 #SBATCH -o slurm-%j.out

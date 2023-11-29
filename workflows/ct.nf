@@ -58,7 +58,7 @@ workflow CT {
             resample_out = RESAMPLE(nw_tree)
         }
         if (toolsToRun.contains('bootstrap')) {
-            boostrap_out = BOOTSTRAP(align_tuple, resample_out)
+            boostrap_out = BOOTSTRAP(align_tuple, resample_out) // Add a way in here to softinput specific alignments (for example interesting genes)
         }
     }    
 }
