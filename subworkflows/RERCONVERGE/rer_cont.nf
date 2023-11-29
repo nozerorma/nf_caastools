@@ -31,7 +31,7 @@ process RER_CONT {
     tag "$rer_matrix"
 
     // Uncomment the following lines to assign workload priority.
-    //label 'process_rer' // have to tell it that only if using cluster!!!!!!!
+    label 'process_rer_med' // have to tell it that only if using cluster!!!!!!!
 
 
     input:
@@ -41,9 +41,10 @@ process RER_CONT {
 
 
     output:
+    file("${ params.traitname }.char2path.output")
     file("${ params.traitname }.continuous.output")
-    file("${ params.traitname }.pval.output")
-    file("${ params.traitname }.lfc.output")
+    // file("${ params.traitname }.pval.output")
+    // file("${ params.traitname }.lfc.output")
 
 
 
@@ -56,10 +57,9 @@ process RER_CONT {
         '$baseDir/subworkflows/RERCONVERGE/local/continuous_rer.R' \\
         ${ trait_file } \\
         ${ rer_master_tree } \\
+        ${ params.traitname }.char2path.output \\
         ${ rer_matrix } \\
         ${ params.traitname }.continuous.output \\
-        ${ params.traitname }.pval.output \\
-        ${ params.traitname }.lfc.output \\
         $args
     """
 }

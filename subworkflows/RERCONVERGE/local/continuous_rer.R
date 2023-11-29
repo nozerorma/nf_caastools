@@ -35,16 +35,17 @@ geneTrees <- readRDS(treePath)
 
 # Convert the trait vector to paths comparable to the paths in the RER matrix.
 charpaths <- char2Paths(trait_vector, geneTrees)
+char2path_obj <- saveRDS(charpaths, args[3])
 
 # Load RERs
-rdsPath <- args[3]
+rdsPath <- args[4]
 traitRERw <- readRDS(rdsPath)
 
 # Perform continuous RER analysis
-res <- correlateWithContinuousPhenotype(traitRERw, charpaths, min.sp = 10, 
-    winsorizeRER = 3, winsorizetrait = 3)
+res <- correlateWithContinuousPhenotype(traitRERw, charpaths, min.sp = args[6],
+    winsorizeRER = args[7], winsorizetrait = args[8])
 
-saveRDS(res, args[4])
+saveRDS(res, args[5])
 
 
 # ## Visualize the results

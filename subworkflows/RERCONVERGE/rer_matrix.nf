@@ -54,8 +54,7 @@ process RER_MATRIX {
         '$baseDir/subworkflows/RERCONVERGE/local/rer_matrix.R' \\
         ${ gene_trees_file } \\
         ${ trait_file } \\
-        ${ outputName }
-        
+        ${ outputName } \\
         $args
     """
 }
